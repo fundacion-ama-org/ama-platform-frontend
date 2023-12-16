@@ -1,0 +1,141 @@
+.container {
+    display: flex;
+}
+.cambiar-color {
+    width: 100%;
+    background-color: #a62776;
+    animation: cambioColor 20s linear infinite;
+    max-width: unset;
+    height: 100vh;
+}
+@media (max-width: 1242px) {
+    .container {
+        height: 98.5vh;
+    }
+    .col1 {
+        width: 50% !important;
+    }
+    .col2 {
+        width: 50% !important;
+    }
+}
+@media (max-width: 1000px) {
+    .container {
+        height: 98.5vh;
+    }
+    .col1 {
+        width: 45% !important;
+    }
+    .col2 {
+        width: 55.1% !important;
+    }
+}
+@media (max-width: 910px) {
+    .container {
+        height: 98.5vh;
+        display: block;
+    }
+    .col1 {
+        width: 40% !important;
+    }
+    .col2 {
+        width: 63% !important;
+    }
+}
+@keyframes cambioColor {
+    0% {
+        background-color: #a62776;
+    }
+    16.67% {
+        background-color:  #2a97ad;
+    }
+    33.33% {
+        background-color:  #75b4c3;
+    }
+    50% {
+        background-color:  #b6e8ef ;
+    }
+    66.67% {
+        background-color: #d687b5;
+    }
+    83.33% {
+        background-color: #946b8c;
+    }
+    100% {
+        background-color: #a62776;
+    }
+}
+.col1 {
+    width: 60%;
+}
+.col2 {
+    width: 40%;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.login-container {
+    width: 500px;
+    height: 590px;
+    padding: 150px 50px;
+    background: white;
+    position: absolute;
+    top: 6%;
+    right: 4%;
+    border-radius: 80px;
+}
+.login-container h2 {
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: calc(100% - 12px);
+    padding: 6px;
+    font-size: 16px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+.form-group button {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.form-group button:hover {
+    background-color: #0056b3;
+}
+.restaurar-contraseña {
+    /* text-align: center; */
+    cursor: pointer;
+    margin-left: 33%;
+}
+.logo4-ama {
+    /* margin-top: 34.5%;
+    margin-left: 50%; */
+    position: absolute;
+    top: 3%;
+}
+.logo3-ama {
+    margin-top: 34.5%;
+    margin-left: 50%;
+}
+.icon-1-5x {
+    font-size: 1.3em;
+}

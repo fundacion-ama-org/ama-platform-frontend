@@ -1,0 +1,82 @@
+.cambiar-color {
+    width: 100%;
+    background-color: #a62776;
+    animation: cambioColor 20s linear infinite;
+    max-width: unset;
+    height: 100vh;
+}
+@media (max-width: 1242px) {
+
+}
+@media (max-width: 1000px) {
+
+}
+@media (max-width: 910px) {
+
+}
+@keyframes cambioColor {
+    0% {
+        background-color: #a62776;
+    }
+    16.67% {
+        background-color:  #2a97ad;
+    }
+    33.33% {
+        background-color:  #75b4c3;
+    }
+    50% {
+        background-color:  #b6e8ef ;
+    }
+    66.67% {
+        background-color: #d687b5;
+    }
+    83.33% {
+        background-color: #946b8c;
+    }
+    100% {
+        background-color: #a62776;
+    }
+}
+.restaurar {
+    background: white;
+    border-radius: 400px;
+    width: 35%;
+    height: 76%;
+    padding: 8% 2%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.logo-ama{
+    cursor: pointer;
+    margin-left: 1%;
+    margin-top: 0.5%;
+}
+.titulo {
+    text-align: center;
+}
+.frase {
+    text-align: center;
+}
+.email {
+    text-align: center;
+}
+.enviar {
+    display: flex;
+    margin-left: 39%;
+}
+.espacio {
+    margin-right: 2%;
+}
+.icon-1-5x {
+    font-size: 1.5em;
+}
+.input-email {
+    margin-left: 1%;
+    margin-top: 0.5%;
+    width: 50%;
+    border-radius: 5px;
+}
+.cursor {
+    cursor: pointer;
+}
+
