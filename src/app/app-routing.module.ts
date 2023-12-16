@@ -8,6 +8,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/beneficiario/beneficiario.module').then(m => m.BeneficiarioModule)
   },
   {
+    path: 'donaciones',
+    loadChildren: () => import('./modules/donaciones/donaciones.module').then(m => m.DonacionesModule)
+  },
+  {
     path: '**',
     redirectTo: 'beneficiario'
   }
