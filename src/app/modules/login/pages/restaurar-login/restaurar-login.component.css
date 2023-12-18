@@ -40,9 +40,9 @@
 .restaurar {
     background: white;
     border-radius: 400px;
-    width: 35%;
-    height: 76%;
-    padding: 8% 2%;
+    width: 25%;
+    height: 41%;
+    padding: 8% 5%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -62,10 +62,12 @@
 }
 .enviar {
     display: flex;
-    margin-left: 39%;
+    margin-left: 43%;
+    margin-top: 5%;
 }
 .espacio {
     margin-right: 2%;
+    font-size: medium;
 }
 .icon-1-5x {
     font-size: 1.5em;
@@ -79,4 +81,13 @@
 .cursor {
     cursor: pointer;
 }
-
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  

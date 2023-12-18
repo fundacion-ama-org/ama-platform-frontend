@@ -6,19 +6,30 @@
     <div class="col2">
         <div class="login-container">
             <h2>Bienvenido</h2>
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <div class="form-group">
-                    <label for="username"><i class="fa fa-user icon-1-5x"></i></label>
-                    <input type="text" id="username" name="username" placeholder="Ingrese su id" required>
+            <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div style="display: flex;">
+                    <mat-icon aria-hidden="false" aria-label="Icono de usuario" style="margin-top: 3.5%;
+                    margin-right: 2%;">person</mat-icon>
+                    <mat-form-field class="example-full-width" style="background: white;">
+                        <mat-label style="color: silver;">Ingrese su Id</mat-label>
+                        <input matInput placeholder="Ex. 0999999999">
+                    </mat-form-field>
                 </div>
-                <div class="form-group">
-                    <label for="password"><i class="fas fa-lock icon-1-5x"></i></label>
-                    <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
+                <div style="display: flex;">
+                    <mat-icon aria-hidden="false" aria-label="Icono de candado" style="margin-top: 3.5%;
+                    margin-right: 2%;">lock</mat-icon>
+                    <mat-form-field class="example-full-width">
+                        <mat-label style="color: silver;">Ingrese su Cotraseña</mat-label>
+                        <input matInput placeholder="">
+                    </mat-form-field>
                 </div>
-                <div class="form-group">
-                    <button type="submit" routerLink="/brigada" (click)="onClickLogin()">Ingresar</button>
-                </div>
-                <a routerLink="/restaurar-contraseña" class="restaurar-contraseña">Olvidé mi contraseña</a>
+                
+                <section class="form-group">
+                    <div class="example-button-row">
+                      <button mat-flat-button color="primary" routerLink="/auth/listar" (click)="onClickLogin()">Ingresar</button>
+                    </div>
+                </section>
+                <a routerLink="/auth/restaurar-login" class="restaurar-contraseña">Olvidé mi contraseña</a>
             </form>
         </div>
     </div>

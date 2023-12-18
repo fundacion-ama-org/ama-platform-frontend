@@ -80,8 +80,8 @@ body {
     font-family: Arial, sans-serif;
 }
 .login-container {
-    width: 500px;
-    height: 590px;
+    width: 430px;
+    height: 280px;
     padding: 150px 50px;
     background: white;
     position: absolute;
@@ -138,4 +138,12 @@ body {
 }
 .icon-1-5x {
     font-size: 1.3em;
+}
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+.example-full-width {
+    width: 100%;
 }
