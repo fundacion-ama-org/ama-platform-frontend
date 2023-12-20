@@ -1,0 +1,29 @@
+<div class="container cambiar-color">
+    <div>
+        <img src="../../../assets/img/logo-ama.png" alt="Logo AMA" width="15%" height="10%" class="logo-ama" routerLink="/login">
+    </div>
+    <div class="restaurar">
+        <h2 class="titulo">!Ups¡</h2>
+        <h2 class="titulo">Olvidaste la contraseña</h2>
+        <p class="frase">Por favor ingresa tu email para que puedas restablecer tu contraseña.</p>
+        <form class="example-form">
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                     placeholder="Ex. pat@example.com">
+              <mat-hint>Errors appear instantly!</mat-hint>
+              @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+                <mat-error>Please enter a valid email address</mat-error>
+              }
+              @if (emailFormControl.hasError('required')) {
+                <mat-error>Email is <strong>required</strong></mat-error>
+              }
+            </mat-form-field>
+          </form>
+          
+        <div class="enviar">
+            <h5 class="espacio">Enviar</h5>
+            <mat-icon aria-hidden="false" aria-label="Flecha hacia la derecha" class="cursor">keyboard_arrow_right</mat-icon>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="container cambiar-color">
+    <div class="col1">
+        <img src="/assets/img/logo4-ama.png" alt="Logo AMA" width="40%" height="50%" class="logo4-ama">
+        <img src="/assets/img/logo3-ama.png" alt="Logo AMA" width="50%" height="40%" class="logo3-ama">
+    </div>
+    <div class="col2">
+        <div class="login-container">
+            <h2>Bienvenido</h2>
+            <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div style="display: flex;">
+                    <mat-icon aria-hidden="false" aria-label="Icono de usuario" style="margin-top: 3.5%;
+                    margin-right: 2%;">person</mat-icon>
+                    <mat-form-field class="example-full-width" style="background: white;">
+                        <mat-label style="color: silver;">Ingrese su Id</mat-label>
+                        <input matInput placeholder="Ex. 0999999999">
+                    </mat-form-field>
+                </div>
+                <div style="display: flex;">
+                    <mat-icon aria-hidden="false" aria-label="Icono de candado" style="margin-top: 3.5%;
+                    margin-right: 2%;">lock</mat-icon>
+                    <mat-form-field class="example-full-width">
+                        <mat-label style="color: silver;">Ingrese su Cotraseña</mat-label>
+                        <input matInput placeholder="">
+                    </mat-form-field>
+                </div>
+                
+                <section class="form-group">
+                    <div class="example-button-row">
+                      <button mat-flat-button color="primary" routerLink="/auth/listar" (click)="onClickLogin()">Ingresar</button>
+                    </div>
+                </section>
+                <a routerLink="/auth/restaurar-login" class="restaurar-contraseña">Olvidé mi contraseña</a>
+            </form>
+        </div>
+    </div>
+</div>
