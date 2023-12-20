@@ -7,6 +7,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -23,6 +24,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     CommonModule,
     //* Http Client Module
     HttpClientModule,
+    ReactiveFormsModule,
 
     //* Modulos de Material
     MatButtonModule,
