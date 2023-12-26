@@ -6,7 +6,7 @@
     <div class="col2">
         <div class="login-container">
             <h2>Bienvenido</h2>
-            <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <form class="example-form" [formGroup]="loginForm">
                 <div style="display: flex;">
                     <mat-icon aria-hidden="false" aria-label="Icono de usuario" style="margin-top: 3.5%;
                     margin-right: 2%;">person</mat-icon>
@@ -23,10 +23,10 @@
                         <input matInput placeholder="">
                     </mat-form-field>
                 </div>
-                
+
                 <section class="form-group">
                     <div class="example-button-row">
-                      <button mat-flat-button color="primary" routerLink="/auth/listar" (click)="onClickLogin()">Ingresar</button>
+                      <button mat-flat-button color="primary" routerLink="/auth/listar" (click)="onSubmit()">Ingresar</button>
                     </div>
                 </section>
                 <a routerLink="/auth/restaurar-login" class="restaurar-contraseña">Olvidé mi contraseña</a>

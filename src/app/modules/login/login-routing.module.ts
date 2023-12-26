@@ -7,7 +7,7 @@ import { ListarBeneficiarioComponent } from '../beneficiario/pages/listar-benefi
 const routes: Routes = [
   { path: 'iniciar-sesion', component: IniciarSesionComponent },
   { path: 'restaurar-login', component: RestaurarLoginComponent },
-  { path: 'listar', component: ListarBeneficiarioComponent },
+  // { path: 'listar', component: ListarBeneficiarioComponent },
   { path: '**', redirectTo: 'iniciar-sesion' }
 ];
 

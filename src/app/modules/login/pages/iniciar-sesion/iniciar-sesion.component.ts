@@ -24,21 +24,24 @@ export class IniciarSesionComponent {
   }
 
   onSubmit() {
-    if (this.loginForm.valid) {
-      const username = this.loginForm.get('username')?.value;
-      const password = this.loginForm.get('password')?.value;
+    this.router.navigateByUrl('/admin/beneficiario');
+    console.log(this.router.navigateByUrl('/admin/beneficiario'))
+    console.log('entra')
+    // if (this.loginForm.valid) {
+    //   const username = this.loginForm.get('username')?.value;
+    //   const password = this.loginForm.get('password')?.value;
 
-      // Utiliza el servicio de autenticación para verificar las credenciales
-      const isAuthenticated = this.authService.login(username, password);
+    //   // Utiliza el servicio de autenticación para verificar las credenciales
+    //   const isAuthenticated = this.authService.login(username, password);
 
-      if (isAuthenticated) {
-        // Si las credenciales son válidas, redirige a la ruta deseada
-        this.router.navigate(['/brigada']);
-      } else {
-        // Si las credenciales son inválidas, puedes mostrar un mensaje o realizar otra acción
-        alert('Credenciales incorrectas. Por favor, inténtalo de nuevo.');
-      }
-    }
+    //   if (isAuthenticated) {
+    //     // Si las credenciales son válidas, redirige a la ruta deseada
+
+    //   } else {
+    //     // Si las credenciales son inválidas, puedes mostrar un mensaje o realizar otra acción
+    //     alert('Credenciales incorrectas. Por favor, inténtalo de nuevo.');
+    //   }
+    // }
   }
 
   onClickLogin() {

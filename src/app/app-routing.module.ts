@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { VerticalComponent } from './modules/layout/vertical/vertical.component';
 
 const routes: Routes = [
   // * Login
@@ -7,18 +8,17 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
   },
-  // * Beneficiario
+
   {
-    path: 'beneficiario',
-    loadChildren: () => import('./modules/beneficiario/beneficiario.module').then(m => m.BeneficiarioModule)
+    path: 'admin',
+    // component: VerticalComponent
+    // LAOD
+
   },
-  {
-    path: 'donaciones',
-    loadChildren: () => import('./modules/donaciones/donaciones.module').then(m => m.DonacionesModule)
-  },
+
   {
     path: '**',
-    redirectTo: 'auth'
+    redirectTo: 'admin'
   }
 ];
 

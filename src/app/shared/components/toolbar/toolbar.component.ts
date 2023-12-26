@@ -12,7 +12,7 @@ export class ToolbarComponent {
   constructor(private router: Router) {}
 
   public sidebarItems = [
-    { label: 'Beneficiario', icon: 'label', url: './list' },
-    { label: 'Donaciones', icon: 'label', url: './list' },
+    { label: 'Beneficiario', icon: 'label', url: '/admin/beneficiario' },
+    { label: 'Donaciones', icon: 'label', url: '/admin/donaciones' },
   ];
 }
