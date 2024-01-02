@@ -7,6 +7,11 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
   },
+  /* Brigadas */
+  {
+    path: 'brigada',
+    loadChildren: () => import('./modules/brigada/brigada.module').then(m => m.BrigadaModule)
+  },
   // * Beneficiario
   {
     path: 'beneficiario',

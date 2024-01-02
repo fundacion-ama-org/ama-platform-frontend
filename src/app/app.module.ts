@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { DonacionesModule } from './modules/donaciones/donaciones.module';
+import { BrigadaModule } from './modules/brigada/brigada.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DonacionesModule } from './modules/donaciones/donaciones.module';
 
     //* Shared Module
     SharedModule,
-    DonacionesModule
+    DonacionesModule,
+    BrigadaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

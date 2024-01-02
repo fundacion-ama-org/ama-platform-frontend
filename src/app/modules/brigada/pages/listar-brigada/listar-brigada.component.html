@@ -1,0 +1,188 @@
+<div class="padding-content-brigada">
+  <h1 class="w-full text-center">Modulo Brigada</h1>
+  <div class="w-full flex justify-content-left flex-wrap mt-6">
+    <div class="w-12 lg:w-6 grid">
+      <div class="w-max col-fixed flex align-content-center flex-wrap cursor-pointer">
+        <!-- <mat-icon matTooltip="Crear Brigada" 
+                  aria-hidden="false" 
+                  fontIcon="add_circle" 
+                  color="primary" 
+                  class="md-36 cursor-pointer">
+        </mat-icon> -->
+        <button mat-mini-fab color="primary" matTooltip="Crear Brigada">
+          <mat-icon   aria-hidden="false" 
+                      fontIcon="add" 
+                      class="md-36 cursor-pointer">
+          </mat-icon>
+        </button>
+      </div>
+      <div class="col">
+        <mat-form-field class="w-full hide-hint" appearance="outline">
+          <mat-label>Nombre de la brigada</mat-label>
+          <input matInput placeholder="Ingrese el nombre de la brigada">
+        </mat-form-field>
+      </div>
+      <div class="w-12 md:w-max col-fixed flex align-content-center flex-wrap">
+        <button mat-raised-button color="primary">Buscar</button>
+      </div>
+      <!-- <app-Ama-modal [titulo]="'Titulo del modal'"></app-Ama-modal>  -->
+    </div>
+  </div>
+  
+  <div class="w-full mt-4">
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+      class="mat-elevation-z8">
+    <ng-container matColumnDef="nombreBrigada">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="nombreBrigada">
+      Nombre brigada
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombreBrigada}} </td>
+    </ng-container>
+    <ng-container matColumnDef="nombreResponsable">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="nombreResponsable">
+      Nombre responsable
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombreResponsable}} </td>
+    </ng-container>
+    <ng-container matColumnDef="descripcionBrigada">
+    <th mat-header-cell *matHeaderCellDef sortActionDescription="descripcionBrigada">
+      Descripción brigada
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.descripcionBrigada}} </td>
+    </ng-container>
+    <ng-container matColumnDef="opciones">
+    <th mat-header-cell *matHeaderCellDef sortActionDescription="opciones">
+      Opciones
+    </th>
+    <td mat-cell *matCellDef="let element"> 
+      <mat-icon color="primary" 
+                matTooltip="Ver Brigada" 
+                aria-hidden="false" 
+                fontIcon="remove_red_eye" 
+                class="mr-3 cursor-pointer">
+      </mat-icon>
+      <mat-icon color="primary" 
+                matTooltip="Editar Brigada" 
+                aria-hidden="false" 
+                fontIcon="edit" 
+                class="mr-3 cursor-pointer">
+      </mat-icon>
+      <mat-icon color="primary" 
+                (click)="abrirModalConfirmarEliminar()"
+                matTooltip="Eliminar Brigada" 
+                aria-hidden="false" 
+                fontIcon="delete" 
+                class="cursor-pointer">
+      </mat-icon>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator    [pageSizeOptions]="[5, 10]"
+                      showFirstLastButtons 
+                      aria-label="Select page of periodic elements"
+                      class="mat-elevation-z8">
+    </mat-paginator>
+  </div>
+  <!-- ver brigada -->
+  <app-Ama-modal [titulo]="'Información de la brigada'">
+    <div class="w-full grid" app-content>
+      <div class="col-6">
+          <p>1) Nombre brigada</p>
+          <p class="ml-3">Nombre____</p>
+      </div>
+      <div class="col-6">
+        <p>2) Descripción brigada</p>
+        <p class="ml-3">Descripción____</p>
+      </div>
+      <div class="col-6">
+        <p>3) Nombre responsable</p>
+        <p class="ml-3">Nombre responsable____</p>
+      </div>
+      <div class="col-6">
+        <p>4) Número responsable</p>
+        <p class="ml-3">Número responsable____</p>
+      </div>
+      <div class="col-6">
+        <p>5) Dirrección</p>
+        <p class="ml-3">Dirrección____</p>
+      </div>
+      <div class="col-6">
+        <p>6) Inicio brigada</p>
+        <p class="ml-3">Inicio____</p>
+      </div>
+      <div class="col-6">
+        <p>7) Fin brigada</p>
+        <p class="ml-3">Fin____</p>
+      </div>
+    </div>
+    <div app-footer>
+      <button mat-raised-button class="button-aceptar ml-3 mt-2">Aceptar</button>
+    </div> 
+  </app-Ama-modal>
+
+  <!-- Editar Brigada -->
+  <!-- <app-Ama-modal [titulo]="'Editar brigada'">
+    <div class="w-full grid" app-content>
+      <div class="col-12">
+        <app-Ama-input    [filtroCaracter]="'letra'" 
+                          [disabled]="false" 
+                          [titulo]="'Nombre de la brigada'" 
+                          [placeHolder]="'Ingrese el nombre de la brigada'">
+        </app-Ama-input>
+      </div>
+      <div class="col-12">
+        <app-Ama-input    [filtroCaracter]="'letra'" 
+                          [disabled]="false" 
+                          [titulo]="'Descripción de la brigada'" 
+                          [placeHolder]="'Ingrese el nombre de la brigada'">
+        </app-Ama-input>
+      </div>
+      <div class="col-12">
+        <app-Ama-input    [filtroCaracter]="'letra'" 
+                          [disabled]="false" 
+                          [titulo]="'Nombre del responsable'" 
+                          [placeHolder]="'Ingrese el nombre del responsable'">
+        </app-Ama-input>
+      </div>
+      <div class="col-12">
+        <app-Ama-input    [filtroCaracter]="'letra'" 
+                          [disabled]="false" 
+                          [titulo]="'Número del responsable'" 
+                          [placeHolder]="'Ingrese el Número del responsable'">
+        </app-Ama-input>
+      </div>
+    </div>
+    <div app-footer>
+      <button class="">Cancelar</button>
+      <button class="ml-3">Guardar</button>
+    </div> 
+  </app-Ama-modal> -->
+  <!-- Eliminar Brigada -->
+  <app-Ama-modal  *ngIf="vistaModelEliminar" 
+                  [titulo]="'Eliminar brigada'" 
+                  [content]="'La Brigada se elimino de forma exitosa'"
+                  (emmiterClose)="cerrarEliminarBrigadaFinal()">
+    <div app-footer-mensaje>
+      <button mat-raised-button class="button-aceptar" (click)="cerrarEliminarBrigadaFinal()">Aceptar</button>
+    </div> 
+  </app-Ama-modal>
+
+  <app-Ama-modal *ngIf="vistaModelEliminarConsulta" [titulo]="'Eliminar brigada'" [hideClose]="false">
+    <div app-content>
+      <p>Estas seguro de eliminar la siguiente brigada #32215125</p>
+    </div> 
+    <div app-footer>
+      <button mat-raised-button color="warn" (click)="cerrarModalConfirmarEliminar()">Cancelar</button>
+      <button mat-raised-button class="button-aceptar ml-3" (click)="aceptarEliminarBrigadaFinal()">Aceptar</button>
+    </div> 
+  </app-Ama-modal>
+
+  <!-- Modificacion de la  Brigada -->
+  <!-- <app-Ama-modal [titulo]="'Modificación de la brigada'" [content]="'La Brigada se modifico de forma exitosa'">
+    <div app-footer-mensaje>
+      <button class="">Aceptar</button>
+    </div> 
+  </app-Ama-modal>
+   -->
+</div>

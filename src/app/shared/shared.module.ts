@@ -11,8 +11,14 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
-
-
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { AmaModalComponent } from '../modules/donaciones/components/Ama-modal/Ama-modal.component';
 
 @NgModule({
   imports: [
@@ -22,11 +28,18 @@ import {MatListModule} from '@angular/material/list';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-
+    MatTableModule,
+    MatPaginatorModule,
+    MatSlideToggleModule,
+    MatSortModule,
+    MatTooltipModule,
+    MatFormFieldModule,
+    MatInputModule,    
     RouterModule
   ],
   declarations: [
-    ToolbarComponent
+    ToolbarComponent,
+    AmaModalComponent
   ],
   exports: [
     CommonModule,
@@ -40,9 +53,15 @@ import {MatListModule} from '@angular/material/list';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-
-
-    ToolbarComponent
+    MatTableModule,
+    MatPaginatorModule,
+    MatSlideToggleModule,
+    MatSortModule,
+    MatTooltipModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ToolbarComponent,
+    AmaModalComponent
 
   ]
 })
