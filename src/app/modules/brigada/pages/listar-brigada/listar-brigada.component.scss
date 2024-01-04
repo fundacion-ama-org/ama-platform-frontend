@@ -37,10 +37,31 @@ th {
                 0px 3px 14px 2px rgba(0, 0, 0, 0.2);
 }
 
+.borde-box {
+    box-sizing: border-box;
+}
 .button-aceptar {
     background-color: green!important;
     color: white!important;
 }
+
+.button-vista {
+    color: green;
+}
+
+.mat-column-numero {
+    width: 32px;
+    //border-right: 1px solid currentColor;
+    padding-right: 24px;
+    text-align: center;
+  }
+
+  .mat-column-opciones {
+    width: 150px;
+    border-left: 1px solid rgb(201, 200, 200);
+    padding-right: 10px;
+    text-align: center;
+  }
 
 ::ng-deep {
     .hide-hint .mat-mdc-form-field-subscript-wrapper {

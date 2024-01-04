@@ -26,7 +26,7 @@
           <div class="col pl-0">
             <p class="m-0 title-style">{{titulo}}</p>
           </div>
-          <div class="w-max col-fixed pr-0 align-content-center">
+          <div class="w-max col-fixed pr-0 align-content-center" *ngIf="hideClose">
             <i class="fa-solid fa-circle-xmark cursor-pointer icon-style" (click)="cerrarModal()"></i>
           </div>
         </div>

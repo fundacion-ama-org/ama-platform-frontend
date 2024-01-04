@@ -17,6 +17,10 @@ export class ListarBrigadaComponent implements OnInit, AfterViewInit {
   vistaModelEliminarConsulta : boolean = false;
   vistaModelEliminar : boolean = false;
 
+  vistaModificarBrigada : boolean = false;
+  vistaModificarBrigadaConfirmacion : boolean = false;
+  vistaModificarBrigadaExito : boolean = false;
+
   @ViewChild(MatSort) sort! : MatSort;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -35,7 +39,7 @@ export class ListarBrigadaComponent implements OnInit, AfterViewInit {
     {nombreBrigada: 10, nombreResponsable: 'Neon', descripcionBrigada: 20.1797},
   ];
 
-  displayedColumns: string[] = ['nombreBrigada', 'nombreResponsable', 'descripcionBrigada', 'opciones'];
+  displayedColumns: string[] = ['numero','nombreBrigada', 'nombreResponsable', 'descripcionBrigada', 'opciones'];
   // cabeceraTabla : any[] = [
   //   {label: 'Nombre brigada', id: 1},
   //   {label: 'Nombre responsable', id: 2},
@@ -44,6 +48,11 @@ export class ListarBrigadaComponent implements OnInit, AfterViewInit {
   // ]
   ngOnInit() {
     this.dataSource = new MatTableDataSource<PeriodicElement>(this.dataSource1);
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   ngAfterViewInit(): void {
@@ -62,6 +71,30 @@ export class ListarBrigadaComponent implements OnInit, AfterViewInit {
   aceptarEliminarBrigadaFinal(){
     this.vistaModelEliminarConsulta = false;
     this.vistaModelEliminar = true;
+  }
+
+  abrirEditarBrigada(){
+    this.vistaModificarBrigada = true;
+  }
+  cerrarEditarBrigada(){
+    this.vistaModificarBrigada = false;
+  }
+
+  abrirConfirmarEditar(){
+    this.cerrarEditarBrigada();
+    this.vistaModificarBrigadaConfirmacion = true;
+  }
+  cerrarConfirmarEditar(){
+    this.vistaModificarBrigadaConfirmacion = false;
+  }
+
+  abrirVistaModificarBrigadaExito(){
+    this.cerrarConfirmarEditar();
+    this.vistaModificarBrigadaExito = true;
+  }
+
+  cerrarVistaModificarBrigadaExito(){
+    this.vistaModificarBrigadaExito = false;
   }
 
   cerrarEliminarBrigadaFinal(){
