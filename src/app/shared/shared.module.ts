@@ -11,6 +11,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -22,7 +25,9 @@ import {MatListModule} from '@angular/material/list';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
     RouterModule
   ],
   declarations: [
@@ -40,8 +45,9 @@ import {MatListModule} from '@angular/material/list';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-
-
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
     ToolbarComponent
 
   ]

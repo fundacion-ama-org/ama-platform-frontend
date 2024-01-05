@@ -8,17 +8,21 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
   },
-
   {
-    path: 'admin',
-    // component: VerticalComponent
-    // LAOD
-
+    path: 'beneficiario',
+    loadChildren: () => import('./modules/beneficiario/beneficiario.module').then(m => m.BeneficiarioModule)
   },
+
+  // {
+  //   path: 'admin',
+  //   // component: VerticalComponent
+  //   // LAOD
+
+  // },
 
   {
     path: '**',
-    redirectTo: 'admin'
+    redirectTo: 'auth'
   }
 ];
 
