@@ -14,5 +14,12 @@ export class ToolbarComponent {
   public sidebarItems = [
     { label: 'Beneficiario', icon: 'label', url: './list' },
     { label: 'Donaciones', icon: 'label', url: './list' },
+    { label: 'Donantes', icon: 'label', url: './donante/homeDonante' },
+    { label: 'Beneficiarios', icon: 'label', url: './beneficiario' },
+    
   ];
+
+  public navigate(url: string): void {
+    this.router.navigate([url]);
+  }
 }
