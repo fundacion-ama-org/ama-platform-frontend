@@ -6,6 +6,7 @@ import { ListarDonacionesComponent } from './pages/listar-donaciones/listar-dona
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { AddDonacionComponent } from './pages/add-donacion/add-donacion.component';
 import { MaterialModule } from '../material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MaterialModule } from '../material/material.module';
   imports: [
     CommonModule,
     DonacionesRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
   ]
 })
 export class DonacionesModule { }
