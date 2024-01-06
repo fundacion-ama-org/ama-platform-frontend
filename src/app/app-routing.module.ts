@@ -13,12 +13,31 @@ const routes: Routes = [
     loadChildren: () => import('./modules/beneficiario/beneficiario.module').then(m => m.BeneficiarioModule)
   },
 
-  // {
-  //   path: 'admin',
-  //   // component: VerticalComponent
-  //   // LAOD
+  {
+    path: 'admin',
+    component: VerticalComponent,
+    children: [
 
-  // },
+      {
+        path: 'beneficiario',
+        loadChildren: () => import('./modules/beneficiario/beneficiario.module').then(m => m.BeneficiarioModule)
+      },
+      {
+        path: 'donaciones',
+        loadChildren: () => import('./modules/donaciones/donaciones.module').then(m => m.DonacionesModule)
+      },
+      {
+        path: '**',
+        redirectTo: 'beneficiario'
+      }
+    ]
+
+  },
+
+  {
+    path: 'donante',
+    loadChildren: () => import('./modules/donante/donante.module').then(m => m.DonanteModule)
+  },
 
   {
     path: '**',

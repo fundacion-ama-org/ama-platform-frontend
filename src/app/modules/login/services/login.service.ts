@@ -9,6 +9,6 @@ export class LoginService {
 
   login(username: string, password: string): boolean {
     // Lógica de autenticación simulada con credenciales estáticas
-    return username === 'usuario' && password === 'contraseña';
+    return username === 'admin' && password === 'admin';
   }
 }

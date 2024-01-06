@@ -1,0 +1,37 @@
+<!-- add-donante-dialog.component.html -->
+
+<h2 mat-dialog-title>Añadir Donante</h2>
+<mat-dialog-content class="dialog-content">
+  <form>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre del Donante</mat-label>
+      <input matInput type="text">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Tipo de Donación</mat-label>
+      <mat-select>
+        <mat-option value="monetaria">Monetaria</mat-option>
+        <mat-option value="especie">En especie</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Valor de Donación</mat-label>
+      <input matInput type="number">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Celular del Donante</mat-label>
+      <input matInput type="tel">
+    </mat-form-field>
+
+    <mat-checkbox class="voluntario-checkbox">¿Desea ser voluntario?</mat-checkbox>
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button color="primary" [mat-dialog-close]="true">Guardar</button>
+</mat-dialog-actions>
