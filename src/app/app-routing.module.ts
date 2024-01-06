@@ -17,8 +17,13 @@ const routes: Routes = [
     loadChildren: () => import('./modules/donaciones/donaciones.module').then(m => m.DonacionesModule)
   },
   {
+    path: 'donante',
+    loadChildren: () => import('./modules/donante/donante.module').then(m => m.DonanteModule)
+  },
+  
+  {
     path: '**',
-    redirectTo: 'auth'
+    redirectTo: 'beneficiario'
   }
 ];
 
