@@ -3,6 +3,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px; /* Aumenta el espacio interior */
+    z-index: 2;
+    background-color: #fff; /* Cambia el color de fondo */
   }
   
   .toolbar-logo {
@@ -18,4 +20,21 @@
   
   .containerP {
     margin : 20px;
+  }
+
+  .main-container {
+    margin-top: 100px; /* Ajusta esto según la altura total de tus toolbars */
+    /* Resto de tus estilos para el contenedor principal */
+  }
+
+  :host {
+    display: block;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .columna-acciones .mat-header-cell, .columna-acciones .mat-cell {
+    width: 50px; /* Ancho fijo para la columna ID */
   }
