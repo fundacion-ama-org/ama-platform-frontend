@@ -1,0 +1,47 @@
+<!-- add-donante-dialog.component.html -->
+
+<h2 mat-dialog-title> Voluntario</h2>
+<mat-dialog-content class="dialog-content">
+  <form>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nombres del voluntario</mat-label>
+      <input matInput type="text">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Apellidos del voluntario</mat-label>
+      <input matInput type="text">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Género del voluntario</mat-label>
+      <mat-select>
+        <mat-option value="masculino">Masculino</mat-option>
+        <mat-option value="femenino">Femenino</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Dirección del voluntario</mat-label>
+      <input matInput type="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>N° de teléfono del voluntario</mat-label>
+      <input matInput type="email">
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+      <mat-label>Correo del voluntario</mat-label>
+      <input matInput type="tel">
+    </mat-form-field>
+
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button color="primary" [mat-dialog-close]="true">Guardar</button>
+</mat-dialog-actions>

@@ -28,7 +28,7 @@ export class HomeDonanteComponent implements AfterViewInit {
   @ViewChild(MatSort, { static: false }) sort: MatSort | null = null;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator | null = null;
 
- 
+
   constructor(public dialog: MatDialog) {
     // Datos de ejemplo para inicializar tu dataSource
     this.dataSource = new MatTableDataSource([
@@ -67,7 +67,7 @@ export class HomeDonanteComponent implements AfterViewInit {
   openDeleteDonanteDialog() {
     const dialogRef = this.dialog.open(EliminardonanteComponent, {
       width: '300px',
-     
+
     });
 
     dialogRef.afterClosed().subscribe(result => {
