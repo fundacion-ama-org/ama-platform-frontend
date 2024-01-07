@@ -21,6 +21,7 @@ export class EliminardonanteComponent {
     this.donanteService.eliminarDonante(this.data.id).subscribe(
       data => {
         console.log('Donante eliminado', data);
+        this.donanteService.donanteFueCreado(); // Emitir evento de donante eliminado
         this.dialogRef.close();
       },
       error => {

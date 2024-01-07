@@ -7,6 +7,7 @@ import { CrearDonanteComponent } from '../crear-donante/crear-donante.component'
 import { EliminardonanteComponent } from '../eliminardonante/eliminardonante.component';
 import { DonanteService } from '../../services/donante.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 // Define la estructura de los datos de un donante
 export interface Donante {
@@ -32,7 +33,7 @@ export class HomeDonanteComponent implements AfterViewInit , OnInit {
 
 
  
-  constructor(public dialog: MatDialog , private donanteService: DonanteService , private changeDetectorRefs: ChangeDetectorRef
+  constructor(public dialog: MatDialog , private donanteService: DonanteService , private changeDetectorRefs: ChangeDetectorRef, private router: Router
     ) {
     
   }
@@ -95,9 +96,6 @@ export class HomeDonanteComponent implements AfterViewInit , OnInit {
     
   }
   
-  
-  
-  
 
   startEdit(index: number, donante: Donante) {
     // Implementa la lógica para iniciar la edición de un donante
@@ -110,10 +108,17 @@ export class HomeDonanteComponent implements AfterViewInit , OnInit {
      
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // Lógica para eliminar el donante
-      }
-    });
+  }
+
+  public sidebarItems = [
+    { label: 'Beneficiario', icon: 'label', url: './list' },
+    { label: 'Donaciones', icon: 'label', url: './list' },
+    { label: 'Donantes', icon: 'label', url: './donante/homeDonante' },
+    { label: 'Beneficiarios', icon: 'label', url: './beneficiario' },
+    
+  ];
+
+  public navigate(url: string): void {
+    this.router.navigate([url]);
   }
 }
