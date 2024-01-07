@@ -20,7 +20,11 @@ const routes: Routes = [
     path: 'donante',
     loadChildren: () => import('./modules/donante/donante.module').then(m => m.DonanteModule)
   },
-  
+  {
+    path: 'voluntarios',
+    loadChildren: () => import('./modules/voluntarios/voluntarios.module').then(m => m.VoluntariosModule)
+  },
+
   {
     path: '**',
     redirectTo: 'donante'

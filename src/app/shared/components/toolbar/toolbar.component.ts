@@ -16,7 +16,8 @@ export class ToolbarComponent {
     { label: 'Donaciones', icon: 'label', url: './list' },
     { label: 'Donantes', icon: 'label', url: './donante/homeDonante' },
     { label: 'Beneficiarios', icon: 'label', url: './beneficiario' },
-    
+    { label: 'Voluntarios', icon: 'volunteer_activism', url: './voluntarios/listar' },
+
   ];
 
   public navigate(url: string): void {

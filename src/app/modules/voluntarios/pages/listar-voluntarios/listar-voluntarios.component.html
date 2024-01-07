@@ -1,0 +1,100 @@
+<div class="info">
+  <h1>Módulo beneficiarios</h1>
+</div>
+
+<main class="container">
+  <div class=" mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+       <!-- ID voluntario Column -->
+       <ng-container matColumnDef="Id_voluntario">
+         <mat-header-cell *matHeaderCellDef mat-sort-header>Id voluntario</mat-header-cell>
+         <mat-cell *matCellDef="let row">{{ row.Id_voluntario }}</mat-cell>
+       </ng-container>
+
+       <!-- Nombre voluntario Column -->
+       <ng-container matColumnDef="Nombres">
+         <mat-header-cell *matHeaderCellDef mat-sort-header>Nombres</mat-header-cell>
+         <mat-cell *matCellDef="let row">{{ row.Nombres }}</mat-cell>
+       </ng-container>
+
+       <!-- Apellidos voluntario Column -->
+       <ng-container matColumnDef="Apellidos">
+         <mat-header-cell *matHeaderCellDef mat-sort-header>Apellidos</mat-header-cell>
+         <mat-cell *matCellDef="let row">{{ row.Apellidos }}</mat-cell>
+       </ng-container>
+
+       <!-- Genero voluntario Column -->
+       <ng-container matColumnDef="Genero">
+         <mat-header-cell *matHeaderCellDef mat-sort-header>Género</mat-header-cell>
+         <mat-cell *matCellDef="let row">{{ row.Genero }}</mat-cell>
+       </ng-container>
+
+       <!-- Dirección voluntario Column -->
+       <ng-container matColumnDef="Direccion">
+         <mat-header-cell *matHeaderCellDef mat-sort-header>Dirección</mat-header-cell>
+         <mat-cell *matCellDef="let row">{{ row.Direccion }}</mat-cell>
+       </ng-container>
+
+       <!-- numero de telefono voluntario Column -->
+       <ng-container matColumnDef="Num_telefono">
+         <mat-header-cell *matHeaderCellDef mat-sort-header>N° teléfono</mat-header-cell>
+         <mat-cell *matCellDef="let row">{{ row.Num_telefono }}</mat-cell>
+       </ng-container>
+
+       <!-- correo de voluntario Column -->
+       <ng-container matColumnDef="Correo">
+         <mat-header-cell *matHeaderCellDef mat-sort-header>Correo</mat-header-cell>
+         <mat-cell *matCellDef="let row">{{ row.Correo }}</mat-cell>
+       </ng-container>
+
+       <!-- fecha de inicio con el voluntario Column -->
+       <ng-container matColumnDef="Fecha_inicioV">
+         <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de inicio</mat-header-cell>
+         <mat-cell *matCellDef="let row">{{ row.Fecha_inicioV }}</mat-cell>
+       </ng-container>
+
+       <!-- fecha final con el voluntario Column -->
+       <ng-container matColumnDef="Fecha_finalV">
+         <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de fin</mat-header-cell>
+         <mat-cell *matCellDef="let row">{{ row.Fecha_finalV }}</mat-cell>
+       </ng-container>
+
+       <!-- actividad del voluntario Column -->
+       <ng-container matColumnDef="ActividadV">
+         <mat-header-cell *matHeaderCellDef mat-sort-header>Actividad</mat-header-cell>
+         <mat-cell *matCellDef="let row">{{ row.ActividadV }}</mat-cell>
+       </ng-container>
+
+
+       <!-- Acciones Column -->
+       <ng-container matColumnDef="acciones">
+         <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+         <mat-cell *matCellDef="let row">
+           <!-- Botones de acción aquí -->
+           <button mat-icon-button color="primary" aria-label="Editar" (click)="openAddDonanteDialog('Editar')" >
+             <mat-icon>edit</mat-icon>
+           </button>
+           <button mat-icon-button color="warn" aria-label="Eliminar" (click)="openDeleteVoluntarioDialog()">
+             <mat-icon>delete</mat-icon>
+           </button>
+
+         </mat-cell>
+       </ng-container>
+
+       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <div class="no-results" *ngIf="dataSource.data.length === 0">
+      No hay resultados
+    </div>
+
+
+    <mat-paginator #paginator
+                   [length]="dataSource.filteredData.length"
+                   [pageIndex]="0"
+                   [pageSize]="10"
+                   [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+  </div>
+</main>
