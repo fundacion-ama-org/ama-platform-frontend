@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 
 //* Angular Material
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -21,6 +22,7 @@ import { MatTableModule } from '@angular/material/table';
   imports: [
     CommonModule,
     MatButtonModule,
+    MatDialogModule,
     MatIconModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -41,6 +43,7 @@ import { MatTableModule } from '@angular/material/table';
 
     //* Modulos de Material
     MatButtonModule,
+    MatDialogModule,
     MatIconModule,
     MatToolbarModule,
     MatSidenavModule,

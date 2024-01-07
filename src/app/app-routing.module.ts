@@ -9,11 +9,6 @@ const routes: Routes = [
     loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
   },
   {
-    path: 'beneficiario',
-    loadChildren: () => import('./modules/beneficiario/beneficiario.module').then(m => m.BeneficiarioModule)
-  },
-
-  {
     path: 'admin',
     component: VerticalComponent,
     children: [
@@ -25,6 +20,10 @@ const routes: Routes = [
       {
         path: 'donaciones',
         loadChildren: () => import('./modules/donaciones/donaciones.module').then(m => m.DonacionesModule)
+      },
+      {
+        path: 'donante',
+        loadChildren: () => import('./modules/donante/donante.module').then(m => m.DonanteModule)
       },
       {
         path: '**',

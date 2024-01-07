@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { BeneficiarioRoutingModule } from './beneficiario-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { ListarBeneficiarioComponent } from './pages/listar-beneficiario/listar-beneficiario.component';
+import { FormularioBeneficiarioComponent } from './components/formulario-beneficiario/formulario-beneficiario.component';
 
 
 @NgModule({
   declarations: [
-    ListarBeneficiarioComponent
+    ListarBeneficiarioComponent,
+    FormularioBeneficiarioComponent
   ],
   imports: [
     CommonModule,
