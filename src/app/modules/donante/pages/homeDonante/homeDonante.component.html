@@ -3,78 +3,79 @@
   <span class="toolbar-title">Donantes</span>
 </mat-toolbar>
 
-<div class="container mat-elevation-z8">
+<div class="container mat-elevation-z8 ">
 
- <br>
- <br>
-  <br>
-  <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="containerP">
+      <button mat-raised-button color="primary" (click)="openAddDonanteDialog()">Agregar Donante</button>
 
-  <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
-    
-    <!-- ID Donante Column -->
-    <ng-container matColumnDef="id_donante">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.id_donante }}</mat-cell>
-    </ng-container>
+    </div>
+   
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+      
+      <!-- ID Donante Column -->
+      <ng-container matColumnDef="id_donante">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.id_donante }}</mat-cell>
+      </ng-container>
 
-    <!-- Nombre Donante Column -->
-    <ng-container matColumnDef="nombre_donante">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.nombre_donante }}</mat-cell>
-    </ng-container>
+      <!-- Nombre Donante Column -->
+      <!-- Nombre Donante Column -->
+      <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.nombre }}</mat-cell>
+      </ng-container>
 
-    <!-- Tipo de Donación Column -->
-    <ng-container matColumnDef="tipo_donacion">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de Donación</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.tipo_donacion }}</mat-cell>
-    </ng-container>
 
-    <!-- Valor de Donación Column -->
-    <ng-container matColumnDef="valor_donacion">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Valor</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.valor_donacion }}</mat-cell>
-    </ng-container>
+      <!-- Tipo de Donación Column -->
+      <!-- Apellido Donante Column -->
+      <ng-container matColumnDef="apellido">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.apellido }}</mat-cell>
+      </ng-container>
 
-    <!-- Celular Donante Column -->
-    <ng-container matColumnDef="celular_donante">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Celular</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.celular_donante }}</mat-cell>
-    </ng-container>
 
-    <!-- Voluntario Column -->
-    <ng-container matColumnDef="voluntario">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Voluntario</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.voluntario ? 'Sí' : 'No' }}</mat-cell>
-    </ng-container>
 
-    <!-- Acciones Column -->
-    <ng-container matColumnDef="acciones">
-      <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        <!-- Botones de acción aquí -->
-        <button mat-icon-button color="primary" aria-label="Editar" (click)="openAddDonanteDialog()" >
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-icon-button color="warn" aria-label="Eliminar" (click)="openDeleteDonanteDialog()">
-          <mat-icon>delete</mat-icon>
-        </button>
+      <!-- Celular Donante Column -->
+      <ng-container matColumnDef="celular_donante">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Celular</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.celular_donante }}</mat-cell>
+      </ng-container>
 
-      </mat-cell>
-    </ng-container>
+      <!-- Correo Donante Column -->
+      <ng-container matColumnDef="correo_donante">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Correo</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.correo_donante }}</mat-cell>
+      </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+      <!-- Acciones Column -->
+      <ng-container matColumnDef="acciones">
+        <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <!-- Botones de acción aquí -->
+          
+          <button mat-icon-button color="warn" aria-label="Eliminar" (click)="openDeleteDonanteDialog(row.id_donante)">
+            <mat-icon>delete</mat-icon>
+          </button>
 
-  <div class="no-results" *ngIf="dataSource.data.length === 0">
-    No hay resultados
-  </div>
+        </mat-cell>
+      </ng-container>
 
-  <mat-paginator #paginator
-                 [length]="dataSource.filteredData.length"
-                 [pageIndex]="0"
-                 [pageSize]="10"
-                 [pageSizeOptions]="[5, 10, 25, 100]">
-  </mat-paginator>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <div class="no-results" *ngIf="dataSource.data.length === 0">
+      No hay resultados
+    </div>
+
+    <mat-paginator #paginator
+                    [length]="dataSource.filteredData.length"
+                    [pageIndex]="0"
+                    [pageSize]="10"
+                    [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
 </div>

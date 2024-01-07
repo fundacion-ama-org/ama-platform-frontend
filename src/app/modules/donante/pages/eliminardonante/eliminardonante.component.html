@@ -7,5 +7,6 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancelar</button>
-  <button mat-button color="warn" [mat-dialog-close]="true">Eliminar</button>
+  <button mat-button color="warn" [mat-dialog-close]="true" (click)="eliminarDonante()"
+  >Eliminar</button>
 </mat-dialog-actions>

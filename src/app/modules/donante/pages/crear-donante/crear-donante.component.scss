@@ -55,4 +55,42 @@ h2 {
   .voluntario-checkbox {
     margin-top: 15px; /* Añade un poco de espacio encima del checkbox */
   }
+  .formulario-donante {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 8px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  input.mat-input-element {
+    padding: 10px;
+  }
+  
+  button.mat-button {
+    margin-right: 10px;
+  }
+  
+  button.primary {
+    background-color: #005f73;
+    color: white;
+  }
+  
+  button.primary:hover {
+    background-color: #0a9396;
+  }
+  
+  button.cancelar {
+    background-color: #e9d8a6;
+    color: black;
+  }
+  
+  button.cancelar:hover {
+    background-color: #ee9b00;
+  }
   
