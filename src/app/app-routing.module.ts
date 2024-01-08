@@ -12,7 +12,6 @@ const routes: Routes = [
     path: 'admin',
     component: VerticalComponent,
     children: [
-
       {
         path: 'beneficiario',
         loadChildren: () => import('./modules/beneficiario/beneficiario.module').then(m => m.BeneficiarioModule)
@@ -26,13 +25,15 @@ const routes: Routes = [
         loadChildren: () => import('./modules/donante/donante.module').then(m => m.DonanteModule)
       },
       {
+        path: 'voluntarios',
+        loadChildren: () => import('./modules/voluntarios/voluntarios.module').then(m => m.VoluntariosModule)
+      },
+      {
         path: '**',
         redirectTo: 'beneficiario'
       }
     ]
-
   },
-
   {
     path: '**',
     redirectTo: 'auth'

@@ -32,10 +32,10 @@ export class HomeDonanteComponent implements AfterViewInit , OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator | null = null;
 
 
- 
+
   constructor(public dialog: MatDialog , private donanteService: DonanteService , private changeDetectorRefs: ChangeDetectorRef, private router: Router
     ) {
-    
+
   }
 
   ngOnInit(): void {
@@ -51,7 +51,7 @@ export class HomeDonanteComponent implements AfterViewInit , OnInit {
     console.log('Cargando donantes...');
     // limpiar la tabla
     this.dataSource.data = [];
-    
+
 
     this.donanteService.getAllDonantes().subscribe(
       data => {
@@ -76,7 +76,7 @@ export class HomeDonanteComponent implements AfterViewInit , OnInit {
 
 
   }
-  
+
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
@@ -92,10 +92,10 @@ export class HomeDonanteComponent implements AfterViewInit , OnInit {
       width: '450px',
       // Otras configuraciones si son necesarias
     });
-  
-    
+
+
   }
-  
+
 
   startEdit(index: number, donante: Donante) {
     // Implementa la lógica para iniciar la edición de un donante
@@ -105,16 +105,17 @@ export class HomeDonanteComponent implements AfterViewInit , OnInit {
     const dialogRef = this.dialog.open(EliminardonanteComponent, {
       width: '300px',
       data: { id: id }
-     
+
     });
 
   }
 
   public sidebarItems = [
-    { label: 'Beneficiario', icon: 'label', url: './admin/beneficiario' },
-    { label: 'Donaciones', icon: 'label', url: './admin/donaciones' },
-    { label: 'Donantes', icon: 'label', url: './admin/donante' },
-
+    { label: 'Beneficiario', icon: 'label', url: './list' },
+    { label: 'Donaciones', icon: 'label', url: './list' },
+    { label: 'Donantes', icon: 'label', url: './donante/homeDonante' },
+    { label: 'Beneficiarios', icon: 'label', url: './beneficiario' },
+    { label: 'Voluntarios', icon: 'volunteer_activism', url: './voluntarios/listar' },
   ];
 
 
