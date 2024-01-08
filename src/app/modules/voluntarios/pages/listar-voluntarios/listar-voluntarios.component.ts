@@ -42,7 +42,9 @@ export class ListarVoluntariosComponent implements AfterViewInit  {
   openAddDonanteDialog(title: string) {
     const dialogRef = this.dialog.open(CrearVoluntarioComponent, {
       width: '450px',
-      data: title
+      data: {
+        title,
+      }
       // puedes pasar datos al modal si es necesario
     });
 

@@ -1,5 +1,16 @@
-<div class="container p-2">
-  <div class="container mat-elevation-z8">
+<app-title-module
+  title="Donantes"
+></app-title-module>
+
+
+<app-options-module>
+  <button mat-raised-button color="primary" (click)="openAddDonanteDialog()">
+    Agregar
+  </button>
+</app-options-module>
+
+<div class="container">
+  <div class="mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
       <!-- ID Donante Column -->
       <ng-container matColumnDef="id_donante">
