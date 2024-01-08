@@ -24,6 +24,7 @@ export class IniciarSesionComponent {
   }
 
   onSubmit() {
+    console.log(this.loginForm.valid)
     if (this.loginForm.valid) {
       const username = this.loginForm.get('username')?.value;
       const password = this.loginForm.get('password')?.value;
@@ -33,7 +34,8 @@ export class IniciarSesionComponent {
 
       if (isAuthenticated) {
         // Si las credenciales son válidas, redirige a la ruta deseada
-        this.router.navigate(['/brigada']);
+        this.router.navigateByUrl('/admin');
+
       } else {
         // Si las credenciales son inválidas, puedes mostrar un mensaje o realizar otra acción
         alert('Credenciales incorrectas. Por favor, inténtalo de nuevo.');
