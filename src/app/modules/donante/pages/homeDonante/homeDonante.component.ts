@@ -111,12 +111,12 @@ export class HomeDonanteComponent implements AfterViewInit , OnInit {
   }
 
   public sidebarItems = [
-    { label: 'Beneficiario', icon: 'label', url: './list' },
-    { label: 'Donaciones', icon: 'label', url: './list' },
-    { label: 'Donantes', icon: 'label', url: './donante/homeDonante' },
-    { label: 'Beneficiarios', icon: 'label', url: './beneficiario' },
-    
+    { label: 'Beneficiario', icon: 'label', url: './admin/beneficiario' },
+    { label: 'Donaciones', icon: 'label', url: './admin/donaciones' },
+    { label: 'Donantes', icon: 'label', url: './admin/donante' },
+
   ];
+
 
   public navigate(url: string): void {
     this.router.navigate([url]);
