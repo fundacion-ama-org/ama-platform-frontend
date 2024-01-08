@@ -1,3 +1,47 @@
+<mat-sidenav-container fullscreen>
 
-<app-toolbar />
-<router-outlet />
+  <mat-sidenav #sidenav mode="over" [ngStyle]="{ width: '250px' }">
+    <mat-toolbar>
+      <span>Menú</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+    </mat-toolbar>
+
+    <mat-nav-list>
+      @for (item of sidebarItems; track $index) {
+        <mat-list-item
+          (click)="navigate(item.url)"
+        >
+          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+          {{ item.label }}
+        </mat-list-item>
+      }
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-toolbar color="basic">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <img class="toolbar-logo" src="assets/img/logo-ama.png" alt="logo" class="toolbar-logo">
+
+    <span class="spacer"></span>
+    <!-- <span> {{user?.email}} </span> -->
+    <button mat-button >
+      Logout
+    </button>
+
+  </mat-toolbar>
+
+  <div class="container p-2">
+
+    <router-outlet></router-outlet>
+
+  </div>
+
+</mat-sidenav-container>

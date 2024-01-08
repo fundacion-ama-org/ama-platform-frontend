@@ -1,3 +1,13 @@
+<app-title-module
+  title="Voluntarios"
+></app-title-module>
+
+<app-options-module>
+  <button mat-raised-button color="primary" (click)="openAddDonanteDialog('Agregar Voluntario')">
+    Agregar
+  </button>
+</app-options-module>
+
 <main class="container">
   <div class="mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">

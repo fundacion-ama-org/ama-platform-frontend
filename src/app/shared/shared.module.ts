@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
@@ -15,6 +14,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { TitleModuleComponent } from './components/title-module/title-module.component';
+import { OptionsModuleComponent } from './components/options-module/options-module.component';
 
 
 
@@ -33,7 +34,9 @@ import { MatTableModule } from '@angular/material/table';
     RouterModule
   ],
   declarations: [
-    ToolbarComponent
+  
+    TitleModuleComponent,
+    OptionsModuleComponent
   ],
   exports: [
     CommonModule,
@@ -51,8 +54,9 @@ import { MatTableModule } from '@angular/material/table';
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
-    ToolbarComponent,
 
+    TitleModuleComponent,
+    OptionsModuleComponent,
   ]
 })
 export class SharedModule { }
