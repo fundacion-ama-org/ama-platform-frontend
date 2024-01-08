@@ -1,86 +1,74 @@
+<div class="container p-2">
+  <div class="container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+      <!-- ID Donante Column -->
+      <ng-container matColumnDef="id_donante">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.id_donante }}</mat-cell>
+      </ng-container>
 
+      <!-- Nombre Donante Column -->
+      <!-- Nombre Donante Column -->
+      <ng-container matColumnDef="nombre">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Nombre</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row">{{ row.nombre }}</mat-cell>
+      </ng-container>
 
+      <!-- Tipo de Donación Column -->
+      <!-- Apellido Donante Column -->
+      <ng-container matColumnDef="apellido">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Apellido</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row">{{ row.apellido }}</mat-cell>
+      </ng-container>
 
+      <!-- Celular Donante Column -->
+      <ng-container matColumnDef="celular_donante">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Celular</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row">{{ row.celular_donante }}</mat-cell>
+      </ng-container>
 
+      <!-- Correo Donante Column -->
+      <ng-container matColumnDef="correo_donante">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Correo</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row">{{ row.correo_donante }}</mat-cell>
+      </ng-container>
 
-  <div class="container p-2">
-    <div color="white" class="custom-toolbar">
-      <img src="../../../../assets/img/logo-ama.png" alt="logo" class="toolbar-logo">
-      <span class="toolbar-title">Donantes</span>
-    </div>
-    
-    <div class="container mat-elevation-z8 ">
-    
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="containerP">
-          <button mat-raised-button color="primary" (click)="openAddDonanteDialog()">Agregar Donante</button>
-    
-        </div>
-       
-        <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
-          
-          <!-- ID Donante Column -->
-          <ng-container matColumnDef="id_donante">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{ row.id_donante }}</mat-cell>
-          </ng-container>
-    
-          <!-- Nombre Donante Column -->
-          <!-- Nombre Donante Column -->
-          <ng-container matColumnDef="nombre">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{ row.nombre }}</mat-cell>
-          </ng-container>
-    
-    
-          <!-- Tipo de Donación Column -->
-          <!-- Apellido Donante Column -->
-          <ng-container matColumnDef="apellido">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{ row.apellido }}</mat-cell>
-          </ng-container>
-    
-    
-    
-          <!-- Celular Donante Column -->
-          <ng-container matColumnDef="celular_donante">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Celular</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{ row.celular_donante }}</mat-cell>
-          </ng-container>
-    
-          <!-- Correo Donante Column -->
-          <ng-container matColumnDef="correo_donante">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Correo</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{ row.correo_donante }}</mat-cell>
-          </ng-container>
-    
-          <!-- Acciones Column -->
-          <ng-container matColumnDef="acciones" class="columna-acciones">
-            <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
-            <mat-cell *matCellDef="let row">
-              <!-- Botones de acción aquí -->
-              
-              <button mat-icon-button color="warn" aria-label="Eliminar" (click)="openDeleteDonanteDialog(row.id_donante)">
-                <mat-icon>delete</mat-icon>
-              </button>
-    
-            </mat-cell>
-          </ng-container>
-    
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        </mat-table>
-    
-        
-    
-        <mat-paginator #paginator
-                        [length]="dataSource.filteredData.length"
-                        [pageIndex]="0"
-                        [pageSize]="10"
-                        [pageSizeOptions]="[5, 10, 25, 100]">
-        </mat-paginator>
-    </div>
+      <!-- Acciones Column -->
+      <ng-container matColumnDef="acciones" class="columna-acciones">
+        <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <!-- Botones de acción aquí -->
+
+          <button
+            mat-icon-button
+            color="warn"
+            aria-label="Eliminar"
+            (click)="openDeleteDonanteDialog(row.id_donante)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+    <mat-paginator
+      #paginator
+      [length]="dataSource.filteredData.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+    >
+    </mat-paginator>
   </div>
+</div>

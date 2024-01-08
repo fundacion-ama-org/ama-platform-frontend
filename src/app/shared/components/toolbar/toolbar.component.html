@@ -1,6 +1,6 @@
 <mat-sidenav-container fullscreen>
 
-  <mat-sidenav #sidenav mode="push" [ngStyle]="{ width: '250px' }">
+  <mat-sidenav #sidenav mode="over" [ngStyle]="{ width: '250px' }">
     <mat-toolbar>
       <span>Menú</span>
       <span class="spacer"></span>
@@ -24,10 +24,12 @@
   </mat-sidenav>
 
 
-  <mat-toolbar color="primary">
+  <mat-toolbar color="basic">
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
+
+    <img class="toolbar-logo" src="assets/img/logo-ama.png" alt="logo" class="toolbar-logo">
 
     <span class="spacer"></span>
     <!-- <span> {{user?.email}} </span> -->

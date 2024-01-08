@@ -13,7 +13,6 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
 import { VoluntariosRoutingModule } from './voluntarios-routing.module';
 import { SharedModule } from '../../shared/shared.module';
-import { LayoutVoluntariosComponent } from './pages/layout-voluntarios/layout-voluntarios.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 @NgModule({
@@ -22,7 +21,6 @@ import {MatInputModule} from '@angular/material/input';
     CrearVoluntarioComponent,
     EditarVoluntarioComponent,
     EliminarVoluntarioComponent,
-    LayoutVoluntariosComponent,
   ],
   imports: [
     CommonModule,
