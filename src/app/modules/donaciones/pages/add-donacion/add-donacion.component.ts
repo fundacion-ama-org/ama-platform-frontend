@@ -3,6 +3,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { DonacionesService } from '../../services/donaciones.service';
 import { Donacion } from '../../interfaces/interfaces';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, switchMap } from 'rxjs';
 
 interface Options {
   value: string;
@@ -15,6 +17,14 @@ interface Options {
   styleUrl: './add-donacion.component.scss'
 })
 export class AddDonacionComponent {
+
+  donacion: Donacion = {
+    nDonacion: '',
+    tipo: '',
+    valor: 0,
+    nDonante: '',
+    fecha: new Date()
+  };
 
   @ViewChild(FormGroupDirective)
   formDirective!: FormGroupDirective;
@@ -30,8 +40,27 @@ export class AddDonacionComponent {
   constructor(
     private fb: FormBuilder,
     private _snackBar: MatSnackBar,
-    private donacionesService: DonacionesService
+    private _donacionesService: DonacionesService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
+
+  ngOnInit(): void {
+
+    if( !this.router.url.includes('editarDonaciones') )
+    return
+
+    const donacionId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+    this.donacion = this._donacionesService.getDonacionXId(donacionId);
+
+    this.myForm.setValue({
+      nDonacion: this.donacion.nDonacion,
+      tipo: this.donacion.tipo,
+      valor: this.donacion.valor,
+      nDonante: this.donacion.nDonante,
+      fecha: this.donacion.fecha
+    })
+  }
 
   options: Options[] = [
     {value: '1', descrip: 'Tipo 1'},
@@ -39,26 +68,22 @@ export class AddDonacionComponent {
     {value: '3', descrip: 'Tipo 3'}
   ];
 
-  donacion: Donacion= {
-    nDonaicon: "",
-    tipo: "",
-    valor: 0,
-    nDonante: "",
-    fecha: new Date()
-  };
-
   onSave() {
 
     if ( this.myForm.invalid ) {
       return;
     }
 
-    this.donacion = this.myForm.value;
+    if ( this.donacion.id ) {
+      //Actualizar
+      return
+    } else {
+      //Crear
+      this._donacionesService.putDonacion(this.myForm.value as Donacion);
+      this.formDirective.resetForm();
+      this.aceptar();
+    }
 
-    this.donacionesService.putDonacion(this.donacion);
-
-    this.formDirective.resetForm();
-    this.aceptar();
   }
 
   aceptar() {

@@ -1,5 +1,6 @@
 export interface Donacion {
-  nDonaicon: string;
+  id?: number;
+  nDonacion: string;
   tipo: string;
   valor: number;
   nDonante: string;

@@ -13,6 +13,10 @@ const routes: Routes = [
     component: AddDonacionComponent
   },
   {
+    path: 'editarDonaciones/:id',
+    component: AddDonacionComponent
+  },
+  {
     path: '**',
     redirectTo: 'listarDonaciones'
   }
