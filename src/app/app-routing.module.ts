@@ -32,7 +32,6 @@ const routes: Routes = [
     ]
 
   },
-<<<<<<< HEAD
   {
     path: 'donaciones',
     loadChildren: () => import('./modules/donaciones/donaciones.module').then(m => m.DonacionesModule)
@@ -45,8 +44,6 @@ const routes: Routes = [
     path: 'voluntarios',
     loadChildren: () => import('./modules/voluntarios/voluntarios.module').then(m => m.VoluntariosModule)
   },
-=======
->>>>>>> 104d71ced2dae1f94207224d7bda0c60a47feb38
 
   {
     path: '**',
