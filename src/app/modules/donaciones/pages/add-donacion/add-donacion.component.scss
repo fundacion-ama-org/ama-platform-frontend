@@ -1,0 +1,45 @@
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+.form-add {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-inputs {
+  width: 80%;
+}
+
+.input-field {
+  padding: 5px;
+}
+
+.botones-form {
+  margin: 5px;
+}
+
+.nombre-input {
+  width: 400px;
+}
+
+.tipo-input {
+  width: 200px;
+}
+
+.valor-input {
+  width: 200px;
+}
+
+.nombre-don-input {
+  width: 400px;
+}

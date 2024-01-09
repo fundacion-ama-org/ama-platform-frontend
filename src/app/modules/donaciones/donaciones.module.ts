@@ -4,16 +4,22 @@ import { CommonModule } from '@angular/common';
 import { DonacionesRoutingModule } from './donaciones-routing.module';
 import { ListarDonacionesComponent } from './pages/listar-donaciones/listar-donaciones.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
+import { AddDonacionComponent } from './pages/add-donacion/add-donacion.component';
+import { MaterialModule } from '../material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     ListarDonacionesComponent,
-    FormularioComponent
+    FormularioComponent,
+    AddDonacionComponent
   ],
   imports: [
     CommonModule,
-    DonacionesRoutingModule
+    DonacionesRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule,
   ]
 })
 export class DonacionesModule { }
