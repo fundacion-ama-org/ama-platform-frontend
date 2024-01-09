@@ -1,10 +1,5 @@
-<!-- <div class="contenedor">
-  <div>
-    <h2>Pueba Tipografa Beneficiario</h2>
-  </div>
-</div> -->
 <div class="p-4">
-  <h1 class="w-full text-center text-xl">Modulo Beneficiario</h1>
+  <app-title-module title="Modulo Beneficiario" />
   <div class="flex justify-between">
     <button mat-raised-button color="primary" (click)="nuevoBeneficiario()">Nuevo</button>
     <mat-form-field>
@@ -78,5 +73,5 @@
     </table>
   </div>
 
-  <app-datatable />
+  <app-datatable [headers]="columns" [data]="[]" [options]="true" [pagination]="true"/>
 </div>

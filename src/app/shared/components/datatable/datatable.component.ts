@@ -1,6 +1,6 @@
-import { Table } from 'primeng/table';
-import { ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { DataTableHeader } from '../../interfaces/datatable.interface';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { ActionsEmit, ActionsEvent, DataTableHeader } from '../../interfaces/datatable.interface';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-datatable',
@@ -9,47 +9,31 @@ import { DataTableHeader } from '../../interfaces/datatable.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DatatableComponent {
-  @ViewChild('#dt1') dt1!: ElementRef
 
-  @Input() headers: DataTableHeader[] = [
-    {
-      nameColumn: 'nombre_beneficiario',
-      title: 'Nombre'
-    },
-    {
-      nameColumn: 'apellido_beneficiario',
-      title: 'Apellido'
-    },
-    {
-      nameColumn: 'direccion',
-      title: 'Direccion'
-    },
-    {
-      nameColumn: 'descripcion_recibida',
-      title: 'Desc. recibida'
-    },
-  ]
+  //TODO: Inputs
+  @Input({required: true}) headers: DataTableHeader[] = [] //* Encabezados para los headers de la tabla
+  @Input({required: true}) data: any[] = [] //* Arreglo de datos en la paginacion
+  @Input() options: boolean = false //* Activa los botones de editar y eliminar
+  @Input() pagination: boolean = false //* Activa la paginacion
+  @Input() limit: number[] = [10, 20, 30] //* Se puede implementar mas LIMITES de la paginacion
 
-  @Input() options: boolean = true
-  @Input() pagination: boolean = true
-  @Input() limit: number[] = [5, 10, 15, 20]
+  //TODO: Outputs
+  @Output() accion: EventEmitter<ActionsEmit> = new EventEmitter<ActionsEmit>();
+  @Output() filtro: EventEmitter<string> = new EventEmitter<string>();
 
-  @Input() data: any[] = [
-    {
-      nombre_beneficiario: 'Marlon',
-      apellido_beneficiario: 'Quinde',
-      direccion: 'Casa del GUASMO',
-      descripcion_recibida: 'Hola mundo'
-    }
-  ]
+  public filterControl: FormControl = new FormControl()
 
-  clear(table: Table) {
-    table.clear();
+  clear() {
+    this.filtro.emit('');
   }
 
-  filtro(event: Event) {
+  filter(event: Event) {
     const value = (event.target as HTMLInputElement).value
-    console.log(this.dt1)
+    this.filtro.emit(value);
+  }
+
+  action(evento: ActionsEvent, value: any){
+    this.accion.emit({action: evento, value})
   }
 
 }

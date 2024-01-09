@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { FormularioBeneficiarioComponent } from '../../components/formulario-beneficiario/formulario-beneficiario.component';
 import Swal from 'sweetalert2';
 import { BeneficiarioService } from '../../services/beneficiario.service';
+import { DataTableHeader } from '../../../../shared/interfaces/datatable.interface';
 
 @Component({
   selector: 'app-listar-beneficiario',
@@ -13,14 +14,33 @@ import { BeneficiarioService } from '../../services/beneficiario.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListarBeneficiarioComponent {
+
+
+
   constructor(private _matDialog: MatDialog, private _service: BeneficiarioService) { }
-
-  vistaModelEliminarConsulta: boolean = false;
-  vistaModelEliminar: boolean = false;
-
-  vistaModificarBeneficiario: boolean = false;
-  vistaModificarBeneficiarioConfirmacion: boolean = false;
-  vistaModificarBeneficiarioExito: boolean = false;
+  public columns: DataTableHeader[] = [
+    {
+      nameColumn: 'nombre_beneficiario',
+      title: 'Nombre'
+    },
+    {
+      nameColumn: 'apellido_beneficiario',
+      title: 'Apellido'
+    },
+    {
+      nameColumn: 'direccion',
+      title: 'Dirección'
+    },
+    {
+      nameColumn: 'tipo_ayuda',
+      title: 'Tipo ayuda'
+    },
+    {
+      nameColumn: 'descripcion',
+      title: 'Desc. recibida'
+    },
+  ]
+  public data: any[] = []
 
   dataSource: any;
   dataSource1: any[] = [
