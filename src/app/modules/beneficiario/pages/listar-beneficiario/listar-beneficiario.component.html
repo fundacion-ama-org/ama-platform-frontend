@@ -3,11 +3,11 @@
     <h2>Pueba Tipografa Beneficiario</h2>
   </div>
 </div> -->
-<div class="padding-content-beneficiario">
-  <h1 style="width: 100%; text-align: center;  font-size: 40px;">Modulo Beneficiario</h1>
-  <div style="display: flex; justify-content: space-between;">
+<div class="p-4">
+  <h1 class="w-full text-center text-xl">Modulo Beneficiario</h1>
+  <div class="flex justify-between">
     <button mat-raised-button color="primary" (click)="nuevoBeneficiario()">Nuevo</button>
-    <mat-form-field class="w-full hide-hint" appearance="outline">
+    <mat-form-field>
       <mat-label>Nombre del Beneficiario</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Nombre del Beneficiario" #input>
     </mat-form-field>
@@ -77,4 +77,6 @@
       </tr>
     </table>
   </div>
+
+  <app-datatable />
 </div>

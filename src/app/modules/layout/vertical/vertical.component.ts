@@ -31,4 +31,8 @@ export class VerticalComponent {
     this.sidenav && this.sidenav.close();
   }
 
+  logout() {
+    this.router.navigate(['/auth/login'])
+  }
+
 }

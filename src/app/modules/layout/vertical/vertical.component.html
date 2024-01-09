@@ -12,12 +12,10 @@
 
     <mat-nav-list>
       @for (item of sidebarItems; track $index) {
-        <mat-list-item
-          (click)="navigate(item.url)"
-        >
-          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
-          {{ item.label }}
-        </mat-list-item>
+      <mat-list-item (click)="navigate(item.url)">
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        {{ item.label }}
+      </mat-list-item>
       }
     </mat-nav-list>
 
@@ -32,7 +30,7 @@
 
     <span class="spacer"></span>
     <!-- <span> {{user?.email}} </span> -->
-    <button mat-button >
+    <button mat-button (click)="logout()">
       Logout
     </button>
 

@@ -38,11 +38,8 @@
   <ng-container matColumnDef="acciones">
     <th mat-header-cell *matHeaderCellDef> Acciones </th>
     <td mat-cell *matCellDef="let donacion">
-      <button
-        [routerLink]="['/donaciones/editarDonaciones', donacion.id ]"
-        mat-icon-button
-        color="primary">
-          <mat-icon>edit</mat-icon>
+      <button [routerLink]="['/admin/donaciones/editarDonaciones', donacion.id ]" mat-icon-button color="primary">
+        <mat-icon>edit</mat-icon>
       </button>
     </td>
   </ng-container>
@@ -55,7 +52,5 @@
   </tr>
 
 </table>
-<mat-paginator [pageSizeOptions]="[5, 10, 20]"
-  showFirstLastButtons
-  aria-label="Seleccione la página de donaciones">
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Seleccione la página de donaciones">
 </mat-paginator>
