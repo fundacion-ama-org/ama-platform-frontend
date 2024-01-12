@@ -42,6 +42,7 @@ import { DatatableComponent } from './components/datatable/datatable.component';
     MatTableModule,
     TableModule,
     RouterModule,
+    ReactiveFormsModule,
 
     ButtonModule,
     InputTextModule,

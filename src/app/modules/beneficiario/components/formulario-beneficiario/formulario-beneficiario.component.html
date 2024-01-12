@@ -1,8 +1,6 @@
 <div style="padding: 30px;">
   <div class="">
-    <h1 style="font-size: 32px; font-weight: 700;">
-      {{name}} beneficiario
-    </h1>
+    <app-title-module [title]="name +' beneficiario'" />
   </div>
   <form action="" [formGroup]="formBeneficiario"
     style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 5px;">
