@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { FormularioBeneficiarioComponent } from '../../components/formulario-beneficiario/formulario-beneficiario.component';
 import Swal from 'sweetalert2';
 import { BeneficiarioService } from '../../services/beneficiario.service';
+import { ActionsEmit, DataTableHeader } from '../../../../shared/interfaces/datatable.interface';
 
 @Component({
   selector: 'app-listar-beneficiario',
@@ -13,47 +14,43 @@ import { BeneficiarioService } from '../../services/beneficiario.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListarBeneficiarioComponent {
+
+
+
   constructor(private _matDialog: MatDialog, private _service: BeneficiarioService) { }
-
-  vistaModelEliminarConsulta: boolean = false;
-  vistaModelEliminar: boolean = false;
-
-  vistaModificarBeneficiario: boolean = false;
-  vistaModificarBeneficiarioConfirmacion: boolean = false;
-  vistaModificarBeneficiarioExito: boolean = false;
-
-  dataSource: any;
-  dataSource1: any[] = [
+  public columns: DataTableHeader[] = [
     {
-      numero: 1,
-      nombre: 'Hydrogen',
-      apellido: 'Hydrogen',
-      direccion: 'Guayaquil',
-      ayuda: 'Hydrogen',
-      descripcion: 'Hydrogen',
+      nameColumn: 'nombre_beneficiario',
+      title: 'Nombre'
     },
     {
-      numero: 2,
-      nombre: 'Helium',
-      apellido: 'Helium',
-      direccion: 'Quito',
-      ayuda: 'Helium',
-      descripcion: 'Helium',
+      nameColumn: 'apellido_beneficiario',
+      title: 'Apellido'
     },
-  ];
-
-  displayedColumns: string[] = [
-    'numero',
-    'nombre',
-    'apellido',
-    'direccion',
-    'ayuda',
-    'descripcion',
-    'opciones',
-  ];
+    {
+      nameColumn: 'direccion',
+      title: 'Dirección'
+    },
+    {
+      nameColumn: 'tipo_ayuda',
+      title: 'Tipo ayuda'
+    },
+    {
+      nameColumn: 'descripcion',
+      title: 'Desc. recibida'
+    },
+  ]
+  public data: any[] = [
+    {
+      nombre_beneficiario: 'Marlon',
+      apellido_beneficiario: 'Quinde',
+      direccion: 'Casa',
+      tipo_ayuda: 'Ayudaaaaa',
+      descripcion: 'Hola mundo'
+    }
+  ]
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource<PeriodicElement>(this.dataSource1);
     this.listarBeneficiarios()
   }
 
@@ -81,14 +78,24 @@ export class ListarBeneficiarioComponent {
     })
   }
 
-
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  acciones(event: ActionsEmit) {
+    switch (event.action) {
+      case 'EDITAR':
+        this.abrirEditarBeneficiario(event.value)
+        break;
+      case 'ELIMINAR':
+        this.abrirModalConfirmarEliminar(event.value)
+        break;
+      case 'NUEVO':
+        this.nuevoBeneficiario()
+        break;
+      case 'FILTRAR':
+        // this.nuevoBeneficiario()
+        break;
+    }
   }
 
-  abrirModalConfirmarEliminar() {
+  abrirModalConfirmarEliminar(element: any) {
     Swal.fire({
       title: "Esta seguro que desea eliminar el beneficiario?",
       icon: "warning",

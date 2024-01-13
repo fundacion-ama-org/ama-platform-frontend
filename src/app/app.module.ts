@@ -23,7 +23,7 @@ import { DonanteModule } from './modules/donante/donante.module';
     DonacionesModule,
     DonanteModule
   ],
-  
+
   providers: [],
   bootstrap: [AppComponent]
 })

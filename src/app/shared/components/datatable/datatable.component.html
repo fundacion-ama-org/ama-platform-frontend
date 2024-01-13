@@ -1,0 +1,60 @@
+<p-table [value]="data" styleClass="p-datatable-gridlines" [rowsPerPageOptions]="limit" [rows]="10"
+  [paginator]="pagination" [tableStyle]="{'min-width': '50rem'}">
+  <ng-template pTemplate="caption">
+    <div class="flex justify-content-between">
+      <button pButton label="Nuevo" class="p-button-outlined" icon="pi pi-plus"
+        (click)="action('NUEVO', null)"></button>
+      <span class="p-input-icon-left ml-auto">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" [formControl]="filterControl" placeholder="Filtrar" />
+      </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      @if (index) {
+      <th class="text-center">Nro</th>
+      }
+      @for (header of headers; track $index) {
+      <th [pSortableColumn]="header.nameColumn">
+        {{header.title}}<p-sortIcon [field]="header.nameColumn"></p-sortIcon>
+      </th>
+      }
+      @if (options) {
+      <th class="text-center">Acciones</th>
+      }
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-data let-columns="columns" let-rowIndex="rowIndex + 1">
+    <tr>
+      @if (index) {
+
+      <td class="text-center">{{rowIndex}}</td>
+      }
+      @for (header of headers; track $index) {
+      <td>{{data[header.nameColumn]}}</td>
+
+      }
+      @if (options) {
+
+      <td class="flex justify-content-evenly">
+        <button mat-icon-button (click)="action('EDITAR', data)">
+          <mat-icon color="primary" aria-hidden="false" fontIcon="edit" class="cursor-pointer">
+          </mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="action('ELIMINAR', data)">
+          <mat-icon color="warn" aria-hidden="false" fontIcon="delete" class="cursor-pointer">
+          </mat-icon>
+        </button>
+      </td>
+      }
+    </tr>
+
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="1000">Sin datos para mostrar.</td>
+    </tr>
+  </ng-template>
+</p-table>
