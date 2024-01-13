@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ResponseArray, ResponseObject } from '../../../shared/interfaces/http.interfaces';
-import { enviroments } from '../../../../environments/envieronments';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BeneficiarioService {
 
-  private _baseUrl: string = enviroments.base_url;
+  private _baseUrl: string = environment.base_url;
 
   constructor(private _html: HttpClient) { }
 

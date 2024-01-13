@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DonantesService {
-  private apiUrl = 'https://platform-ama-backend.azurewebsites.net/api'; 
+  private apiUrl = environment.base_url;
 
   constructor(private http: HttpClient) { }
 
