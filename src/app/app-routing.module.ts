@@ -21,8 +21,8 @@ const routes: Routes = [
         loadChildren: () => import('./modules/donaciones/donaciones.module').then(m => m.DonacionesModule)
       },
       {
-        path: 'donante',
-        loadChildren: () => import('./modules/donante/donante.module').then(m => m.DonanteModule)
+        path: 'donantes',
+        loadChildren: () => import('./modules/donantes/donantes.module').then(m => m.DonantesModule)
       },
       {
         path: 'voluntarios',

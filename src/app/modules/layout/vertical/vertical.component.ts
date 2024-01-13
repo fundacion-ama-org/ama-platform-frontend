@@ -22,7 +22,7 @@ export class VerticalComponent {
   public sidebarItems = [
     { label: 'Beneficiario', icon: 'redeem', url: './admin/beneficiario' },
     { label: 'Donaciones', icon: 'savings', url: './admin/donaciones' },
-    { label: 'Donantes', icon: 'diversity_3', url: './admin/donante' },
+    { label: 'Donantes', icon: 'diversity_3', url: './admin/donantes' },
     { label: 'Voluntarios', icon: 'volunteer_activism', url: './admin/voluntarios' },
   ];
 

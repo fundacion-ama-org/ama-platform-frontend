@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DonanteRoutingModule } from './donante-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 import { CrearDonanteComponent } from './pages/crear-donante/crear-donante.component';
+
 import { HomeDonanteComponent } from './pages/homeDonante/homeDonante.component';
-import { EliminardonanteComponent } from './pages/eliminardonante/eliminardonante.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,24 +12,25 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatSelectModule } from '@angular/material/select';
-import { HttpClientModule } from '@angular/common/http';
-import { SharedModule } from '../../shared/shared.module';
 
-
+const routes: Routes = [
+  {
+    path: 'crearDonante',
+    component: CrearDonanteComponent,
+  },
+  {
+    path: 'homeDonante',
+    component: HomeDonanteComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'homeDonante',
+  },
+];
 
 @NgModule({
-  declarations: [
-    CrearDonanteComponent,
-    HomeDonanteComponent,
-    EliminardonanteComponent
-  ],
   imports: [
-    CommonModule,
-    DonanteRoutingModule,
-    FormsModule,
+    RouterModule.forChild(routes),
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -39,12 +39,8 @@ import { SharedModule } from '../../shared/shared.module';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatDialogModule,
-    MatCheckboxModule,
-    MatSelectModule ,
-    HttpClientModule,
-    SharedModule
-
-  ]
+    FormsModule,
+  ],
+  exports: [RouterModule],
 })
-export class DonanteModule { }
+export class DonantesRoutingModule {}
