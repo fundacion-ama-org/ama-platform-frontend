@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
-import { DonanteService } from '../../services/donante.service';
+import { DonantesService } from '../../services/donantes.service';
 
 @Component({
   selector: 'app-crear-donante',
@@ -17,7 +17,7 @@ export class CrearDonanteComponent {
   };
 
   constructor(
-    private donanteService: DonanteService,
+    private donantesService: DonantesService,
     private dialogRef: MatDialogRef<CrearDonanteComponent>
   ) {}
 
@@ -33,10 +33,10 @@ export class CrearDonanteComponent {
         phoneNumber: this.donante.celular
         // Agrega otros campos si son necesarios
       };
-      this.donanteService.addDonante(nuevoDonante).subscribe(
+      this.donantesService.addDonante(nuevoDonante).subscribe(
         data => {
           console.log('Donante creado', data);
-          this.donanteService.donanteFueCreado(); // Emitir evento de donante creado
+          this.donantesService.donanteFueCreado(); // Emitir evento de donante creado
           this.dialogRef.close();
         },
         error => {

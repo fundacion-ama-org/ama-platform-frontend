@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class DonanteService {
+export class DonantesService {
   private apiUrl = 'https://platform-ama-backend.azurewebsites.net/api'; 
 
   constructor(private http: HttpClient) { }

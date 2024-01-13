@@ -1,7 +1,4 @@
-<app-title-module
-  title="Donantes"
-></app-title-module>
-
+<app-title-module title="Donantes"></app-title-module>
 
 <app-options-module>
   <button mat-raised-button color="primary" (click)="openAddDonanteDialog()">
@@ -12,14 +9,11 @@
 <div class="container">
   <div class="mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
-      <!-- ID Donante Column -->
       <ng-container matColumnDef="id_donante">
         <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
         <mat-cell *matCellDef="let row">{{ row.id_donante }}</mat-cell>
       </ng-container>
 
-      <!-- Nombre Donante Column -->
-      <!-- Nombre Donante Column -->
       <ng-container matColumnDef="nombre">
         <mat-header-cell *matHeaderCellDef mat-sort-header
           >Nombre</mat-header-cell
@@ -27,8 +21,6 @@
         <mat-cell *matCellDef="let row">{{ row.nombre }}</mat-cell>
       </ng-container>
 
-      <!-- Tipo de Donación Column -->
-      <!-- Apellido Donante Column -->
       <ng-container matColumnDef="apellido">
         <mat-header-cell *matHeaderCellDef mat-sort-header
           >Apellido</mat-header-cell
@@ -36,7 +28,6 @@
         <mat-cell *matCellDef="let row">{{ row.apellido }}</mat-cell>
       </ng-container>
 
-      <!-- Celular Donante Column -->
       <ng-container matColumnDef="celular_donante">
         <mat-header-cell *matHeaderCellDef mat-sort-header
           >Celular</mat-header-cell
@@ -44,7 +35,6 @@
         <mat-cell *matCellDef="let row">{{ row.celular_donante }}</mat-cell>
       </ng-container>
 
-      <!-- Correo Donante Column -->
       <ng-container matColumnDef="correo_donante">
         <mat-header-cell *matHeaderCellDef mat-sort-header
           >Correo</mat-header-cell
@@ -52,12 +42,9 @@
         <mat-cell *matCellDef="let row">{{ row.correo_donante }}</mat-cell>
       </ng-container>
 
-      <!-- Acciones Column -->
       <ng-container matColumnDef="acciones" class="columna-acciones">
         <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
         <mat-cell *matCellDef="let row">
-          <!-- Botones de acción aquí -->
-
           <button
             mat-icon-button
             color="warn"
