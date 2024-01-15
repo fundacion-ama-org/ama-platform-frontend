@@ -80,9 +80,8 @@ body {
     font-family: Arial, sans-serif;
 }
 .login-container {
-    width: 430px;
-    height: 280px;
-    padding: 150px 50px;
+    width: 350px;
+    padding: 125px 50px;
     background: white;
     position: absolute;
     top: 6%;
