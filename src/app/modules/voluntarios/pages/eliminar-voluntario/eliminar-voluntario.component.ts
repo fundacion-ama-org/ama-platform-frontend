@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { VoluntariosService } from '../../services/voluntario.service';
 
 @Component({
@@ -10,13 +10,14 @@ import { VoluntariosService } from '../../services/voluntario.service';
 export class EliminarVoluntarioComponent {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: {id:string},
-  private voluntarioService: VoluntariosService){}
+  public dialogRef: MatDialogRef<EliminarVoluntarioComponent>){}
+
+  cancel(): void{
+    this.dialogRef.close(false);
+  }
 
   deleted(): void{
-    this.voluntarioService.eliminarVoluntario(this.data.id).subscribe(
-      () => console.log("Eliminado")
-
-    );
+    this.dialogRef.close(true);
   }
 
 }

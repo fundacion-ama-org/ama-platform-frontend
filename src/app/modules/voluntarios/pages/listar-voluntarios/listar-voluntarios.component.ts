@@ -9,6 +9,7 @@ import { EliminarVoluntarioComponent } from '../eliminar-voluntario/eliminar-vol
 import { CrearVoluntarioComponent } from '../crear-voluntario/crear-voluntario.component';
 import { Voluntarios } from '../../interfaces/voluntarios';
 import { VoluntariosService } from '../../services/voluntario.service';
+import { filter, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-listar-voluntarios',
@@ -69,10 +70,13 @@ export class ListarVoluntariosComponent implements AfterViewInit, OnInit  {
       data: {id:id},
     });
     console.log(id);
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+    dialogRef.afterClosed().pipe(
+      filter((result: boolean) => result === true),
+      switchMap( () => this.voluntarioService.eliminarVoluntario(id)),
+      filter( (wasDelete : boolean) => wasDelete === true)
+    )
+    .subscribe( () => {
         this.load();
-      }
     });
   }
 
