@@ -18,3 +18,19 @@ export interface ActivityType {
   id:   number;
   name: string;
 }
+
+
+export enum IdentificationType{
+  Cedula = "Cedula",
+  Pasaporte = "Pasaporte"
+}
+
+export enum GenderType{
+  Male = "Masculino",
+  Female = "Femenenino"
+}
+
+export enum ActivityTypes{
+  Ayudar = "Ayudar",
+  Donar = "Donar"
+}

@@ -1,1 +1,84 @@
-<p>editar-voluntario works!</p>
+<!-- add-donante-dialog.component.html -->
+
+<h2 mat-dialog-title>
+  {{ title }}
+</h2>
+<mat-dialog-content class="dialog-content">
+  <form [formGroup]="voluntarioForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Tipo de identificación</mat-label>
+      <mat-select required
+      formControlName="identificationTypeId">
+        <mat-option *ngFor="let identificationType of identificationType"
+        [value]="identificationType.id">
+        {{identificationType.description}}
+        </mat-option>
+      </mat-select>
+      <mat-error>Seleccione un tipo de identificación</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>identificación</mat-label>
+      <input matInput type="text" formControlName="identification" required
+      >
+      <mat-error *ngIf="voluntarioForm.get('identification')?.hasError('required')">El campo es requerido</mat-error>
+      <mat-error *ngIf="voluntarioForm.get('identification')?.hasError('minlength')">Debe tener al menos 10 dígitos</mat-error>
+      <mat-error *ngIf="voluntarioForm.get('identification')?.hasError('maxlength')">Debe tener como máximo 10 dígitos</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nombres del voluntario</mat-label>
+      <input matInput type="text" formControlName="firstName" required >
+      <mat-error>El campo es requerido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Apellidos del voluntario</mat-label>
+      <input matInput type="text" formControlName="lastName" required>
+      <mat-error>El campo es requerido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Correo del voluntario</mat-label>
+      <input matInput type="tel" required formControlName="email">
+      <mat-error>El campo es requerido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>N° de teléfono del voluntario</mat-label>
+      <input matInput type="number" required formControlName="phoneNumber">
+      <mat-error *ngIf="voluntarioForm.get('phoneNumber')?.hasError('required')">El campo es requerido</mat-error>
+      <mat-error *ngIf="voluntarioForm.get('phoneNumber')?.hasError('minlength')">Debe tener al menos 10 dígitos</mat-error>
+      <mat-error *ngIf="voluntarioForm.get('phoneNumber')?.hasError('maxlength')">Debe tener como máximo 10 dígitos</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Género del voluntario</mat-label>
+      <mat-select required formControlName="genderType">
+        <mat-option *ngFor="let gType of genderType"
+        [value]="gType.id"
+        >{{gType.description}}</mat-option>
+      </mat-select>
+      <mat-error>Seleccione un tipo de identificación</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Dirección del voluntario</mat-label>
+      <input matInput type="text" required formControlName="address">
+      <mat-error>El campo es requerido</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Typo de actividad</mat-label>
+      <mat-select required formControlName="activityType">
+        <mat-option *ngFor="let act of activityType" [value]="act.id">{{act.description}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button color="primary"  (click)="onSubmit()">Guardar</button>
+</mat-dialog-actions>

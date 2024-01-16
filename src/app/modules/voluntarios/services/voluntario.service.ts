@@ -28,6 +28,11 @@ export class VoluntariosService {
     );
   }
 
+  updateVoluntario( voluntario: any) : Observable<Voluntarios>{
+    if( !voluntario.id ) throw Error('Voluntario id is required');
+    return this.http.put<Voluntarios>(`${this._baseUrl}/Volunterr/${voluntario.id}`, voluntario)
+  }
+
 
 }
 
