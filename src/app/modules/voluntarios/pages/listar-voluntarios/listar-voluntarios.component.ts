@@ -63,14 +63,15 @@ export class ListarVoluntariosComponent implements AfterViewInit, OnInit  {
   }
 
 
-  openDeleteVoluntarioDialog() {
+  openDeleteVoluntarioDialog(id: string) {
     const dialogRef = this.dialog.open(EliminarVoluntarioComponent, {
       width: '300px',
+      data: {id:id},
     });
-
+    console.log(id);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Lógica para eliminar el donante
+        this.load();
       }
     });
   }

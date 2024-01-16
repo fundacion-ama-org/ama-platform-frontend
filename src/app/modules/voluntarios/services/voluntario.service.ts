@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { Voluntarios } from '../interfaces/voluntarios';
 
 @Injectable({
@@ -16,6 +16,19 @@ export class VoluntariosService {
   getVoluntarios() : Observable<Voluntarios[]>{
     return this.http.get<Voluntarios[]>(`${this._baseUrl}/Volunteers`);
   }
+
+  addVoluntario(donante: any): Observable<any> {
+    return this.http.post(`${this._baseUrl}/Volunteers`, donante);
+  }
+
+  eliminarVoluntario(id: string): Observable<any> {
+    return this.http.delete(`${this._baseUrl}/Volunteers/${id}`).pipe(
+      map(resp => true),
+      catchError( err => of(false))
+    );
+  }
+
+
 }
 
 
