@@ -1,12 +1,19 @@
-export interface Voluntarios{
-  Id_voluntario : Number;
-  Nombres: String;
-  Apellidos: String;
-  Genero: String;
-  Direccion: String;
-  Num_telefono: Number;
-  Correo: String;
-  Fecha_inicioV: String;
-  Fecha_finalV: String;
-  ActividadV: String;
+export interface Voluntarios {
+  id:             number;
+  personId:       number;
+  firstName:      string;
+  lastName:       string;
+  email:          string;
+  phoneNumber:    string;
+  isActive:       boolean;
+  gender:         string;
+  address:        string;
+  available:      boolean;
+  activityTypeId: number;
+  activityType:   ActivityType;
+}
+
+export interface ActivityType {
+  id:   number;
+  name: string;
 }
