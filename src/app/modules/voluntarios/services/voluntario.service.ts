@@ -17,11 +17,11 @@ export class VoluntariosService {
     return this.http.get<Voluntarios[]>(`${this._baseUrl}/Volunteers`);
   }
 
-  addVoluntario(donante: any): Observable<any> {
-    return this.http.post(`${this._baseUrl}/Volunteers`, donante);
+  addVoluntario(voluntario: any): Observable<any> {
+    return this.http.post(`${this._baseUrl}/Volunteers`, voluntario);
   }
 
-  eliminarVoluntario(id: string): Observable<any> {
+  deleteVoluntario(id: string): Observable<any> {
     return this.http.delete(`${this._baseUrl}/Volunteers/${id}`).pipe(
       map(resp => true),
       catchError( err => of(false))

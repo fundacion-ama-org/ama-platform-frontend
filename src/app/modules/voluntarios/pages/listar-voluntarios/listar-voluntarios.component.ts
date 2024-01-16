@@ -18,7 +18,7 @@ import { filter, switchMap } from 'rxjs';
 })
 export class ListarVoluntariosComponent implements AfterViewInit, OnInit  {
 
-  displayedColumns: string[] = ['id', 'personId', 'firstName', 'lastName', 'email', 'phoneNumber', 'isActive', 'gender', 'address', 'available', 'activityTypeId', 'activityType', 'acciones'];
+  displayedColumns: string[] = ['id', 'identification','personId', 'firstName', 'lastName', 'email', 'phoneNumber', 'isActive', 'gender', 'address', 'available', 'activityTypeId', 'activityType', 'acciones'];
 
   dataSource = new MatTableDataSource<Voluntarios>([]);
 
@@ -72,7 +72,7 @@ export class ListarVoluntariosComponent implements AfterViewInit, OnInit  {
     console.log(id);
     dialogRef.afterClosed().pipe(
       filter((result: boolean) => result === true),
-      switchMap( () => this.voluntarioService.eliminarVoluntario(id)),
+      switchMap( () => this.voluntarioService.deleteVoluntario(id)),
       filter( (wasDelete : boolean) => wasDelete === true)
     )
     .subscribe( () => {

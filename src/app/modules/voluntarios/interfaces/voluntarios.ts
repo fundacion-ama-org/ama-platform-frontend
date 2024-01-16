@@ -1,5 +1,6 @@
 export interface Voluntarios {
   id:             number;
+  identification: string;
   personId:       number;
   firstName:      string;
   lastName:       string;

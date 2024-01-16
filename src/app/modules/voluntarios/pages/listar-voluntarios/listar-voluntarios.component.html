@@ -20,6 +20,11 @@
         <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
       </ng-container>
 
+      <ng-container matColumnDef="identification">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>identification</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.identification}} </mat-cell>
+      </ng-container>
+
       <ng-container matColumnDef="personId">
         <mat-header-cell *matHeaderCellDef mat-sort-header>personaId</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.personId}} </mat-cell>
