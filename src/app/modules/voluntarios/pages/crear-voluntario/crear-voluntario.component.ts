@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivityType, ActivityTypes, GenderType, IdentificationType } from '../../interfaces/voluntarios';
 import { VoluntariosService } from '../../services/voluntario.service';
 
@@ -11,16 +11,16 @@ import { VoluntariosService } from '../../services/voluntario.service';
 })
 export class CrearVoluntarioComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: { title: string },
-  private voluntarioService : VoluntariosService) {}
+  private voluntarioService : VoluntariosService, public dialogRef: MatDialogRef<CrearVoluntarioComponent>) {}
 
   public identificationType = [
-    { id: '1', description: 'Cédula'},
-    { id: '3', description: 'Pasaporte'},
+    { id: 1, description: 'Cédula'},
+    { id: 3, description: 'Pasaporte'},
   ]
 
   public genderType = [
-    {id: 1, description: 'Masculino'},
-    {id: 2, description: 'Femenino'},
+    {description: 'Masculino'},
+    {description: 'Femenino'},
   ]
 
   public activityType = [
@@ -40,9 +40,9 @@ export class CrearVoluntarioComponent {
     lastName : new FormControl<string>('',{nonNullable:true}),
     email : new FormControl<string>('',{nonNullable:true}),
     phoneNumber: new FormControl<string>('', {nonNullable:true, validators: [Validators.minLength(10), Validators.maxLength(10)]}),
-    genderType : new FormControl<GenderType>(GenderType.Male, {nonNullable:true}),
+    gender : new FormControl<GenderType>(GenderType.Male, {nonNullable:true}),
     address : new FormControl<string>('', {nonNullable:true}),
-    activityType: new FormControl<ActivityTypes>(ActivityTypes.Ayudar, {
+    activityTypeId: new FormControl<ActivityTypes>(ActivityTypes.Ayudar, {
       nonNullable:true
     })
   });
@@ -50,6 +50,10 @@ export class CrearVoluntarioComponent {
   onSubmit() : void {
     if(this.voluntarioForm.invalid) return
 
+    console.log(this.voluntarioForm.value);
+
+
     this.voluntarioService.addVoluntario(this.voluntarioForm.value).subscribe()
+    this.dialogRef.close(true);
   }
 }

@@ -21,8 +21,8 @@ export interface ActivityType {
 
 
 export enum IdentificationType{
-  Cedula = "Cedula",
-  Pasaporte = "Pasaporte"
+  Cedula = 1,
+  Pasaporte = 3
 }
 
 export enum GenderType{

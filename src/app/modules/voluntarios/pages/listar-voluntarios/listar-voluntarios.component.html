@@ -15,56 +15,56 @@
     <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
 
       <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>id</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id voluntario</mat-header-cell>
         <!-- <mat-cell *matCellDef="let row">x</mat-cell> -->
         <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="identification">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>identification</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Identificación</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.identification}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="personId">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>personaId</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id de la persona</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.personId}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="firstName">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>firstName</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.firstName}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="lastName">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>lastName</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.lastName}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>email</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Correo Electrónico</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.email}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="phoneNumber">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>phoneNumber</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Número de teléfono</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.phoneNumber}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="isActive">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>isActive</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.isActive}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Estado</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.isActive === true ? 'Activo': 'Inactivo'}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="gender">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>gender</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Género</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.gender}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="address">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>address</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Dirección</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.address}} </mat-cell>
       </ng-container>
-
+<!--
       <ng-container matColumnDef="available">
         <mat-header-cell *matHeaderCellDef mat-sort-header>available</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.available}} </mat-cell>
@@ -73,10 +73,10 @@
       <ng-container matColumnDef="activityTypeId">
         <mat-header-cell *matHeaderCellDef mat-sort-header>activityTypeId</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.activityTypeId}} </mat-cell>
-      </ng-container>
+      </ng-container> -->
 
       <ng-container matColumnDef="activityType">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>activityType</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Actividad</mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.activityType.name}} </mat-cell>
       </ng-container>
 

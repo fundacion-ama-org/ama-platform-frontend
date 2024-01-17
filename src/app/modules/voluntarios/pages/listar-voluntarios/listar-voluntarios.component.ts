@@ -18,7 +18,9 @@ import { filter, switchMap } from 'rxjs';
 })
 export class ListarVoluntariosComponent implements AfterViewInit, OnInit  {
 
-  displayedColumns: string[] = ['id', 'identification','personId', 'firstName', 'lastName', 'email', 'phoneNumber', 'isActive', 'gender', 'address', 'available', 'activityTypeId', 'activityType', 'acciones'];
+  displayedColumns: string[] = ['id', 'identification','personId', 'firstName', 'lastName', 'email', 'phoneNumber', 'isActive', 'gender', 'address',
+  // 'available', 'activityTypeId',
+  'activityType', 'acciones'];
 
   dataSource = new MatTableDataSource<Voluntarios>([]);
 
@@ -57,10 +59,9 @@ export class ListarVoluntariosComponent implements AfterViewInit, OnInit  {
       // puedes pasar datos al modal si es necesario
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('El modal fue cerrado');
-      // Lógica después de cerrar el modal
-    });
+    dialogRef.afterClosed().pipe(
+      filter((result: boolean) => result === true),
+    ).subscribe( () => this.load())
   }
 
 
