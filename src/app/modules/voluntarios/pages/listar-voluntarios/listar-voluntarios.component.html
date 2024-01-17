@@ -4,7 +4,7 @@
   <button
     mat-raised-button
     color="primary"
-    (click)="openAddDonanteDialog('Agregar Voluntario')"
+    (click)="openAddVoluntarioDialog('Agregar Voluntario')"
   >
     Agregar
   </button>
@@ -13,74 +13,71 @@
 <main class="container">
   <div class="mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
-      <ng-container matColumnDef="Id_voluntario">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Id voluntario</mat-header-cell
-        >
-        <mat-cell *matCellDef="let row">{{ row.Id_voluntario }}</mat-cell>
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id voluntario</mat-header-cell>
+        <!-- <mat-cell *matCellDef="let row">x</mat-cell> -->
+        <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="Nombres">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Nombres</mat-header-cell
-        >
-        <mat-cell *matCellDef="let row">{{ row.Nombres }}</mat-cell>
+      <ng-container matColumnDef="identification">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Identificación</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.identification}} </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="Apellidos">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Apellidos</mat-header-cell
-        >
-        <mat-cell *matCellDef="let row">{{ row.Apellidos }}</mat-cell>
+      <ng-container matColumnDef="personId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id de la persona</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.personId}} </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="Genero">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Género</mat-header-cell
-        >
-        <mat-cell *matCellDef="let row">{{ row.Genero }}</mat-cell>
+      <ng-container matColumnDef="firstName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.firstName}} </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="Direccion">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Dirección</mat-header-cell
-        >
-        <mat-cell *matCellDef="let row">{{ row.Direccion }}</mat-cell>
+      <ng-container matColumnDef="lastName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.lastName}} </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="Num_telefono">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >N° teléfono</mat-header-cell
-        >
-        <mat-cell *matCellDef="let row">{{ row.Num_telefono }}</mat-cell>
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Correo Electrónico</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.email}} </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="Correo">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Correo</mat-header-cell
-        >
-        <mat-cell *matCellDef="let row">{{ row.Correo }}</mat-cell>
+      <ng-container matColumnDef="phoneNumber">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Número de teléfono</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.phoneNumber}} </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="Fecha_inicioV">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Fecha de inicio</mat-header-cell
-        >
-        <mat-cell *matCellDef="let row">{{ row.Fecha_inicioV }}</mat-cell>
+      <ng-container matColumnDef="isActive">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Estado</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.isActive === true ? 'Activo': 'Inactivo'}} </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="Fecha_finalV">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Fecha de fin</mat-header-cell
-        >
-        <mat-cell *matCellDef="let row">{{ row.Fecha_finalV }}</mat-cell>
+      <ng-container matColumnDef="gender">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Género</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.gender}} </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="ActividadV">
-        <mat-header-cell *matHeaderCellDef mat-sort-header
-          >Actividad</mat-header-cell
-        >
-        <mat-cell *matCellDef="let row">{{ row.ActividadV }}</mat-cell>
+      <ng-container matColumnDef="address">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Dirección</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.address}} </mat-cell>
+      </ng-container>
+<!--
+      <ng-container matColumnDef="available">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>available</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.available}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="activityTypeId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>activityTypeId</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.activityTypeId}} </mat-cell>
+      </ng-container> -->
+
+      <ng-container matColumnDef="activityType">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Actividad</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.activityType.name}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="acciones">
@@ -90,7 +87,7 @@
             mat-icon-button
             color="primary"
             aria-label="Editar"
-            (click)="openAddDonanteDialog('Editar')"
+            (click)="openEditVoluntarioDialog('Editar Voluntario',row)"
           >
             <mat-icon>edit</mat-icon>
           </button>
@@ -98,7 +95,7 @@
             mat-icon-button
             color="warn"
             aria-label="Eliminar"
-            (click)="openDeleteVoluntarioDialog()"
+            (click)="openDeleteVoluntarioDialog(row.id)"
           >
             <mat-icon>delete</mat-icon>
           </button>

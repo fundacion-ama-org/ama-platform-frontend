@@ -6,6 +6,7 @@
   <!-- Aquí puedes agregar más información del donante si lo deseas -->
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancelar</button>
-  <button mat-button color="warn" [mat-dialog-close]="true">Eliminar</button>
+  <button mat-button mat-dialog-close (click)="cancel()">Cancelar</button>
+  <button mat-button color="warn" [mat-dialog-close]="true"
+  (click)="deleted()">Eliminar</button>
 </mat-dialog-actions>

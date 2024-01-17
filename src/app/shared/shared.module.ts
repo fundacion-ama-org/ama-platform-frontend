@@ -26,6 +26,7 @@ import { TableModule } from 'primeng/table';
 import { StyleClassModule } from 'primeng/styleclass';
 
 import { DatatableComponent } from './components/datatable/datatable.component';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   imports: [
@@ -52,7 +53,8 @@ import { DatatableComponent } from './components/datatable/datatable.component';
 
     TitleModuleComponent,
     OptionsModuleComponent,
-    DatatableComponent
+    DatatableComponent,
+    ErrorComponent
   ],
   exports: [
     CommonModule,
