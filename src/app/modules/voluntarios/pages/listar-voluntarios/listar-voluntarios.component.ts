@@ -10,6 +10,7 @@ import { CrearVoluntarioComponent } from '../crear-voluntario/crear-voluntario.c
 import { Voluntarios } from '../../interfaces/voluntarios';
 import { VoluntariosService } from '../../services/voluntario.service';
 import { filter, switchMap } from 'rxjs';
+import { EditarVoluntarioComponent } from '../editar-voluntario/editar-voluntario.component';
 
 @Component({
   selector: 'app-listar-voluntarios',
@@ -50,11 +51,27 @@ export class ListarVoluntariosComponent implements AfterViewInit, OnInit  {
     this.dataSource.paginator = this.paginator;
   }
 
-  openAddVoluntarioDialog(title: string) {
+  openAddVoluntarioDialog(title:any) {
+
     const dialogRef = this.dialog.open(CrearVoluntarioComponent, {
       width: '450px',
       data: {
         title,
+      }
+      // puedes pasar datos al modal si es necesario
+    });
+
+    dialogRef.afterClosed().pipe(
+      filter((result: boolean) => result === true),
+    ).subscribe( () => this.load())
+  }
+
+  openEditVoluntarioDialog(title:string, row:any) {
+    const dialogRef = this.dialog.open(EditarVoluntarioComponent, {
+      width: '450px',
+      data: {
+        title,
+        row
       }
       // puedes pasar datos al modal si es necesario
     });

@@ -28,22 +28,8 @@ export class VoluntariosService {
     );
   }
 
-  updateVoluntario( voluntario: any) : Observable<Voluntarios>{
-    if( !voluntario.id ) throw Error('Voluntario id is required');
-    return this.http.put<Voluntarios>(`${this._baseUrl}/Volunterr/${voluntario.id}`, voluntario)
+  updateVoluntario( voluntario: any, id : any) : Observable<Voluntarios>{
+    if( !id ) throw Error('Voluntario id is required');
+    return this.http.put<Voluntarios>(`${this._baseUrl}/Volunteers/${id}`, voluntario)
   }
-
-
 }
-
-
-// {
-//   "identificationTypeId": 1,
-//   "firstName": "voluntario1",
-//   "lastName": "voluntarioaAp",
-//   "email": "voluntario@example.com",
-//   "phoneNumber": "0999999988",
-//   "gender": "masculino",
-//   "address": "sur voluntad",
-//   "activityTypeId": 1
-// }

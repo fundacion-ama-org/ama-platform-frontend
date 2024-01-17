@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { VoluntariosService } from '../../services/voluntario.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivityTypes, GenderType, IdentificationType } from '../../interfaces/voluntarios';
@@ -11,17 +11,32 @@ import { ActivityTypes, GenderType, IdentificationType } from '../../interfaces/
 })
 
 export class EditarVoluntarioComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { title: string },
-  private voluntarioService : VoluntariosService) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { title: string, row: any},
+  private voluntarioService : VoluntariosService, public dialogRef: MatDialogRef<EditarVoluntarioComponent>) {
+    this.voluntarioForm.setValue({
+      identificationTypeId: IdentificationType.Cedula,
+      identification: data.row.identification,
+      firstName: data.row.firstName,
+      lastName: data.row.lastName,
+      email: data.row.email,
+      phoneNumber: data.row.phoneNumber,
+      gender: data.row.gender,
+      address: data.row.address,
+      activityTypeId: data.row.activityTypeId,
+    });
+
+    console.log(data.row);
+
+  }
 
   public identificationType = [
-    { id: '1', description: 'Cédula'},
-    { id: '3', description: 'Pasaporte'},
+    { id: 1, description: 'Cédula'},
+    { id: 3, description: 'Pasaporte'},
   ]
 
   public genderType = [
-    {id: 1, description: 'Masculino'},
-    {id: 2, description: 'Femenino'},
+    {description: 'Masculino'},
+    {description: 'Femenino'},
   ]
 
   public activityType = [
@@ -41,9 +56,9 @@ export class EditarVoluntarioComponent {
     lastName : new FormControl<string>('',{nonNullable:true}),
     email : new FormControl<string>('',{nonNullable:true}),
     phoneNumber: new FormControl<string>('', {nonNullable:true, validators: [Validators.minLength(10), Validators.maxLength(10)]}),
-    genderType : new FormControl<GenderType>(GenderType.Male, {nonNullable:true}),
+    gender : new FormControl<GenderType>(GenderType.Male, {nonNullable:true}),
     address : new FormControl<string>('', {nonNullable:true}),
-    activityType: new FormControl<ActivityTypes>(ActivityTypes.Ayudar, {
+    activityTypeId: new FormControl<ActivityTypes>(ActivityTypes.Ayudar, {
       nonNullable:true
     })
   });
@@ -51,6 +66,23 @@ export class EditarVoluntarioComponent {
   onSubmit() : void {
     if(this.voluntarioForm.invalid) return
 
-    this.voluntarioService.addVoluntario(this.voluntarioForm.value).subscribe()
+
+    const updated = {
+      identificationTypeId : 1,
+      identification : this.voluntarioForm.value.identification,
+      firstName : this.voluntarioForm.value.firstName,
+      lastName : this.voluntarioForm.value.lastName,
+      email : this.voluntarioForm.value.email,
+      phoneNumber : this.voluntarioForm.value.phoneNumber,
+      gender : this.voluntarioForm.value.gender,
+      address : this.voluntarioForm.value.address,
+      activityTypeId : this.voluntarioForm.value.activityTypeId,
+    }
+
+    console.log(this.data.row.id);
+
+
+    this.voluntarioService.updateVoluntario(updated, this.data.row.id).subscribe()
+    this.dialogRef.close(true);
   }
 }
