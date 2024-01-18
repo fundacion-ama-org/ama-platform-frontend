@@ -18,8 +18,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import { AmaModalComponent } from '../modules/donaciones/components/Ama-modal/Ama-modal.component';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import { AmaModalComponent } from './components/Ama-modal/Ama-modal.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -34,8 +35,11 @@ import { AmaModalComponent } from '../modules/donaciones/components/Ama-modal/Am
     MatSortModule,
     MatTooltipModule,
     MatFormFieldModule,
-    MatInputModule,    
-    RouterModule
+    MatInputModule, 
+    MatDatepickerModule,   
+    RouterModule,
+    ReactiveFormsModule,
+    MatNativeDateModule
   ],
   declarations: [
     ToolbarComponent,
@@ -61,8 +65,9 @@ import { AmaModalComponent } from '../modules/donaciones/components/Ama-modal/Am
     MatFormFieldModule,
     MatInputModule,
     ToolbarComponent,
-    AmaModalComponent
-
+    AmaModalComponent,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class SharedModule { }

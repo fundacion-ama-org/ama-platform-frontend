@@ -17,14 +17,14 @@
         </mat-form-field>
       </div>
       <div class="w-12 md:w-max col-fixed flex align-content-center flex-wrap">
-        <button mat-raised-button color="primary">Crear brigada</button>
+        <button mat-raised-button color="primary" (click)="abrirVistaCrearBrigada()">Crear brigada</button>
       </div>
       <!-- <app-Ama-modal [titulo]="'Titulo del modal'"></app-Ama-modal>  -->
     </div>
   </div>
   
   <div class="w-full mt-4">
-    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+    <table mat-table [dataSource]="dataSource" matSort
       class="mat-elevation-z8">
       <ng-container matColumnDef="numero">
         <th  mat-header-cell *matHeaderCellDef>
@@ -56,21 +56,22 @@
         Opciones
       </th>
       <td mat-cell *matCellDef="let element"> 
-        <mat-icon color="primary"
+        <mat-icon (click)="abrirModalVistaBrigada(element.id_brigada)"
+                  color="primary"
                   matTooltip="Ver Brigada" 
                   aria-hidden="false" 
                   fontIcon="remove_red_eye" 
                   class="mr-3 cursor-pointer">
         </mat-icon>
         <mat-icon color="accent" 
-                  (click)="abrirEditarBrigada()"
+                  (click)="abrirEditarBrigada(element.id_brigada)"
                   matTooltip="Editar Brigada" 
                   aria-hidden="false" 
                   fontIcon="edit" 
                   class="mr-3 cursor-pointer">
         </mat-icon>
         <mat-icon color="warn" 
-                  (click)="abrirModalConfirmarEliminar()"
+                  (click)="abrirModalConfirmarEliminar(element.nombreBrigada,element.id_brigada)"
                   matTooltip="Eliminar Brigada" 
                   aria-hidden="false" 
                   fontIcon="delete" 
@@ -80,89 +81,172 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell p-3" colspan="4">La brigada "{{input.value}}" no existe</td>
+        <ng-container *ngIf="brigadasLista.length > 0;else brigadaVacia">
+          <td class="mat-cell p-3" colspan="4">La brigada "{{input.value}}" aún no se encuentra registrada</td>
+        </ng-container>
+        <ng-template #brigadaVacia>
+          <td class="mat-cell p-3" colspan="4">Hasta el momento, no se han registrado brigadas.</td>
+        </ng-template>
       </tr>
     </table>
     <mat-paginator    [pageSizeOptions]="[5, 10]"
                       showFirstLastButtons 
-                      aria-label="Select page of periodic elements"
+                      aria-label="Selecciona"
                       class="mat-elevation-z8">
     </mat-paginator>
   </div>
   <!-- ver brigada -->
-  <app-Ama-modal *ngIf="false" [titulo]="'Información de la brigada'">
+  <app-Ama-modal *ngIf="vistaVerBrigada" [titulo]="'Información de la brigada'" (emmiterClose)="cerrarModalVistaBrigada()">
     <div class="w-full grid" app-content>
       <div class="col-6">
           <p>1) Nombre brigada</p>
-          <p class="ml-3">Nombre____</p>
+          <p class="ml-3">{{brigadasLista[posicionVistaBrigada].nombreBrigada}}</p>
       </div>
       <div class="col-6">
         <p>2) Descripción brigada</p>
-        <p class="ml-3">Descripción____</p>
+        <p class="ml-3">{{brigadasLista[posicionVistaBrigada].descripcionBrigada}}</p>
       </div>
       <div class="col-6">
         <p>3) Nombre responsable</p>
-        <p class="ml-3">Nombre responsable____</p>
+        <p class="ml-3">{{brigadasLista[posicionVistaBrigada].nombreResponsable}}</p>
       </div>
       <div class="col-6">
         <p>4) Número responsable</p>
-        <p class="ml-3">Número responsable____</p>
+        <p class="ml-3">{{brigadasLista[posicionVistaBrigada].num_Responsable}}</p>
       </div>
       <div class="col-6">
         <p>5) Dirrección</p>
-        <p class="ml-3">Dirrección____</p>
+        <p class="ml-3">{{brigadasLista[posicionVistaBrigada].direccion}}</p>
       </div>
       <div class="col-6">
         <p>6) Inicio brigada</p>
-        <p class="ml-3">Inicio____</p>
+        <p class="ml-3">{{brigadasLista[posicionVistaBrigada].inicio_Brigada | date: 'dd/MM/yyyy'}}</p>
       </div>
       <div class="col-6">
         <p>7) Fin brigada</p>
-        <p class="ml-3">Fin____</p>
+        <p class="ml-3">{{brigadasLista[posicionVistaBrigada].fin_Brigada | date: 'dd/MM/yyyy'}}</p>
       </div>
     </div>
     <div app-footer>
-      <button mat-raised-button class="button-aceptar ml-3 mt-2">Aceptar</button>
+      <button mat-raised-button class="button-aceptar ml-3 mt-2" (click)="cerrarModalVistaBrigada()">Aceptar</button>
     </div> 
   </app-Ama-modal>
 
-  <!-- Editar Brigada -->
-  <app-Ama-modal *ngIf="vistaModificarBrigada" [titulo]="'Editar brigada'" (emmiterClose)="cerrarEditarBrigada()">
-    <div class="w-full grid" app-content>
+  <!-- Crear brigada -->
+  <app-Ama-modal *ngIf="vistaCrearBrigada" [titulo]="'Crear brigada'" (emmiterClose)="cerrrarVistaCrearBrigada()">
+    <form class="w-full grid" app-content [formGroup]="nueva_brigada_FormGroup">
       <div class="col-12 pr-0">
         <mat-form-field class="w-full hide-hint" appearance="outline">
           <mat-label>Nombre de la brigada</mat-label>
-          <input matInput placeholder="Ingrese el nombre de la brigada">
+          <input matInput placeholder="Ingrese el nombre de la brigada" formControlName="nombre_brigada">
         </mat-form-field>
       </div>
       <div class="col-12 pr-0">
         <mat-form-field class="w-full hide-hint" appearance="outline">
           <mat-label>Descripción de la brigada</mat-label>
-          <input matInput placeholder="Ingrese la descripción de la brigada">
+          <input matInput placeholder="Ingrese la descripción de la brigada" formControlName="descripcion_brigada">
         </mat-form-field>
       </div>
       <div class="col-12 pr-0">
         <mat-form-field class="w-full hide-hint" appearance="outline">
           <mat-label>Nombre del responsable</mat-label>
-          <input matInput placeholder="Ingrese el nombre del responsable'">
+          <input matInput placeholder="Ingrese el nombre del responsable'" formControlName="nombre_responsable">
+        </mat-form-field>
+      </div>
+      <div class="col-12 pr-0">
+        <mat-form-field class="w-full" [ngClass]="{'hide-hint': !nueva_brigada_FormGroup.get('numero_responsable')?.errors?.['minlength'] && !nueva_brigada_FormGroup.get('numero_responsable')?.errors?.['maxlength']}" appearance="outline">
+          <mat-label>Número del responsable</mat-label>
+          <span matPrefix class="ml-3">09</span>
+          <input matInput placeholder="Ingrese el número del responsable'" formControlName="numero_responsable" (keypress)="blockEvent($event)" [maxlength]="8" [minlength]="8">
+          
+          <mat-error *ngIf="nueva_brigada_FormGroup.get('numero_responsable')?.errors?.['minlength']">
+            El número debe tener al menos 8 caracteres
+          </mat-error>
+      
+          <!-- Mensaje de error para longitud máxima -->
+          <mat-error *ngIf="nueva_brigada_FormGroup.get('numero_responsable')?.errors?.['maxlength']">
+            El número no puede tener más de 8 caracteres.
+          </mat-error>
         </mat-form-field>
       </div>
       <div class="col-12 pr-0">
         <mat-form-field class="w-full hide-hint" appearance="outline">
-          <mat-label>Número del responsable</mat-label>
-          <input matInput placeholder="Ingrese el númerp del responsable'">
+          <mat-label>Dirección de la brigada</mat-label>
+          <input matInput placeholder="Ingrese la dirección de la brigada'" formControlName="direccion">
         </mat-form-field>
       </div>
-    </div>
+      <div class="col-12 pr-0">
+        <mat-form-field class="w-full hide-hint" appearance="outline">
+          <mat-label>Fecha Inicio y fin de la brigada</mat-label>
+          <mat-date-range-input [formGroup]="nueva_brigada_FormGroup" [rangePicker]="picker">
+            <input matStartDate formControlName="fechaInicio" placeholder="Fecha Inicio">
+            <input matEndDate formControlName="fechFin" placeholder="Fecha Fin">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+      </div>
+    </form>
+    <div app-footer>
+      <button mat-raised-button color="warn" (click)="cerrrarVistaCrearBrigada()">Cancelar</button>
+      <button mat-raised-button class="button-aceptar ml-3" (click)="crearBrigada()" [disabled]="nueva_brigada_FormGroup.invalid" [ngClass]="{'opacity-40': nueva_brigada_FormGroup.invalid}">Guardar</button>
+    </div> 
+  </app-Ama-modal>
+  <!-- Crear brigada Exito-->
+  <app-Ama-modal  *ngIf="vistaCrearBrigadaExito" 
+  [titulo]="'Crear brigada'" 
+  [content]="'La Brigada se creo de forma exitosa'"
+  [hideClose]="false">
+<div app-footer-mensaje>
+<button mat-raised-button class="button-aceptar" (click)="cerrarModalCreacionBrigadaExito()">Aceptar</button>
+</div> 
+</app-Ama-modal>
+  <!-- Editar Brigada -->
+  <app-Ama-modal *ngIf="vistaModificarBrigada" [titulo]="'Editar brigada'" (emmiterClose)="cerrarEditarBrigada()">
+    <form class="w-full grid" app-content [formGroup]="editar_brigada_FormGroup">
+      <div class="col-12 pr-0">
+        <mat-form-field class="w-full hide-hint" appearance="outline">
+          <mat-label>Nombre de la brigada</mat-label>
+          <input matInput placeholder="Ingrese el nombre de la brigada" formControlName="nombre_brigada_editar">
+        </mat-form-field>
+      </div>
+      <div class="col-12 pr-0">
+        <mat-form-field class="w-full hide-hint" appearance="outline">
+          <mat-label>Descripción de la brigada</mat-label>
+          <input matInput placeholder="Ingrese la descripción de la brigada" formControlName="descripcion_brigada_editar">
+        </mat-form-field>
+      </div>
+      <div class="col-12 pr-0">
+        <mat-form-field class="w-full hide-hint" appearance="outline">
+          <mat-label>Nombre del responsable</mat-label>
+          <input matInput placeholder="Ingrese el nombre del responsable'" formControlName="nombre_responsable_editar">
+        </mat-form-field>
+      </div>
+      <div class="col-12 pr-0">
+        <mat-form-field class="w-full" [ngClass]="{'hide-hint': !editar_brigada_FormGroup.get('numero_responsable_editar')?.errors?.['minlength'] && !editar_brigada_FormGroup.get('numero_responsable_editar')?.errors?.['maxlength']}" appearance="outline">
+          <mat-label>Número del responsable</mat-label>
+          <span matPrefix class="ml-3">09</span>
+          <input matInput placeholder="Ingrese el número del responsable'" formControlName="numero_responsable_editar" (keypress)="blockEvent($event)" [maxlength]="8" [minlength]="8">
+          <mat-error *ngIf="editar_brigada_FormGroup.get('numero_responsable_editar')?.errors?.['minlength']">
+            El número debe tener al menos 8 caracteres
+          </mat-error>
+      
+          <!-- Mensaje de error para longitud máxima -->
+          <mat-error *ngIf="editar_brigada_FormGroup.get('numero_responsable_editar')?.errors?.['maxlength']">
+            El número no puede tener más de 8 caracteres.
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </form>
     <div app-footer>
       <button mat-raised-button color="warn" (click)="cerrarEditarBrigada()">Cancelar</button>
-      <button mat-raised-button class="button-aceptar ml-3" (click)="abrirConfirmarEditar()">Guardar</button>
+      <button mat-raised-button class="button-aceptar ml-3" (click)="abrirConfirmarEditar()" [disabled]="editar_brigada_FormGroup.invalid" [ngClass]="{'opacity-40': editar_brigada_FormGroup.invalid}">Guardar</button>
     </div> 
   </app-Ama-modal>
 
   <app-Ama-modal *ngIf="vistaModificarBrigadaConfirmacion" [titulo]="'Editar brigada'" [hideClose]="false">
     <div app-content>
-      <p>Estas seguro de editar la siguiente brigada #32215125</p>
+      <p>¿Está seguro de editar la siguiente brigada?</p>
     </div> 
     <div app-footer>
       <button mat-raised-button color="warn" (click)="cerrarConfirmarEditar()">Cancelar</button>
@@ -189,7 +273,10 @@
 
   <app-Ama-modal *ngIf="vistaModelEliminarConsulta" [titulo]="'Eliminar brigada'" [hideClose]="false">
     <div app-content>
-      <p>Estas seguro de eliminar la siguiente brigada #32215125</p>
+      <p>¿Está seguro de eliminar la siguiente brigada?</p>
+      <ul>
+        <li class="font-bold mt-2 list-disc">{{brigadaEliminar}}</li>
+      </ul>
     </div> 
     <div app-footer>
       <button mat-raised-button color="warn" (click)="cerrarModalConfirmarEliminar()">Cancelar</button>
@@ -197,11 +284,14 @@
     </div> 
   </app-Ama-modal>
 
-  <!-- Modificacion de la  Brigada -->
-  <!-- <app-Ama-modal [titulo]="'Modificación de la brigada'" [content]="'La Brigada se modifico de forma exitosa'">
+  <!-- Error petición de la  Brigada -->
+  <app-Ama-modal  [titulo]="'Error en la petición'"  *ngIf="vistaErrorPeticion"
+                  [content]="'Lamentamos los inconvenientes. En estos momentos, nos encontramos con problemas técnicos. Por favor, inténtelo de nuevo más tarde.'"
+                  [hideClose]="false"
+                  [peticionError]="true">
     <div app-footer-mensaje>
-      <button class="">Aceptar</button>
+      <button mat-raised-button class="button-aceptar mt-2" (click)="cerrarVistaErrorPeticion()">Aceptar</button>
     </div> 
   </app-Ama-modal>
-   -->
+
 </div>

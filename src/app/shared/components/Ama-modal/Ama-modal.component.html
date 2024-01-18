@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="pt-4 pb-3 content-modal w-full flex">
-        <img width="60px" src="assets/img/green-check.webp" alt="">
+        <img [width]="(peticionError) ? '40' : '60'" height="auto" [src]="(peticionError) ? 'assets/img/icono-x.png': 'assets/img/green-check.webp'" alt="">
         <div class="flex align-content-center flex-wrap">
           <p class="m-0 ml-3">{{content}}</p>
         </div>
