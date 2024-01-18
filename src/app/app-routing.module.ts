@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { VerticalComponent } from './modules/layout/vertical/vertical.component';
+import { ErrorComponent } from './shared/components/error/error.component';
 
 const routes: Routes = [
   // * Login
@@ -21,23 +22,21 @@ const routes: Routes = [
         loadChildren: () => import('./modules/donaciones/donaciones.module').then(m => m.DonacionesModule)
       },
       {
-        path: 'donante',
-        loadChildren: () => import('./modules/donante/donante.module').then(m => m.DonanteModule)
+        path: 'donantes',
+        loadChildren: () => import('./modules/donantes/donantes.module').then(m => m.DonantesModule)
       },
       {
         path: 'voluntarios',
         loadChildren: () => import('./modules/voluntarios/voluntarios.module').then(m => m.VoluntariosModule)
       },
-      {
-        path: '**',
-        redirectTo: 'beneficiario'
-      }
+      { path: '404', component: ErrorComponent},
+      { path: '', redirectTo: 'beneficiario', pathMatch: 'full'},
+      { path: '**', redirectTo: '404'},
     ]
   },
-  {
-    path: '**',
-    redirectTo: 'auth'
-  }
+  { path: '404', component: ErrorComponent},
+  { path: '', redirectTo: 'admin', pathMatch: 'full'},
+  { path: '**', redirectTo: '404'}
 ];
 
 @NgModule({
