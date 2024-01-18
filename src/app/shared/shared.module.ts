@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 //* Angular Material
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -23,6 +24,7 @@ import { OptionsModuleComponent } from './components/options-module/options-modu
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
 import { StyleClassModule } from 'primeng/styleclass';
 
 import { DatatableComponent } from './components/datatable/datatable.component';
@@ -32,6 +34,7 @@ import { ErrorComponent } from './components/error/error.component';
   imports: [
     CommonModule,
     MatButtonModule,
+    MatCardModule,
     MatDialogModule,
     MatIconModule,
     MatTooltipModule,
@@ -42,6 +45,7 @@ import { ErrorComponent } from './components/error/error.component';
     MatInputModule,
     MatTableModule,
     TableModule,
+    ToastModule,
     RouterModule,
     ReactiveFormsModule,
 
@@ -64,6 +68,7 @@ import { ErrorComponent } from './components/error/error.component';
 
     //* Modulos de Material
     MatButtonModule,
+    MatCardModule,
     MatDialogModule,
     MatIconModule,
     MatTooltipModule,
@@ -76,6 +81,7 @@ import { ErrorComponent } from './components/error/error.component';
 
     //* PrimeNG
     TableModule,
+    ToastModule,
     ButtonModule,
     InputTextModule,
     StyleClassModule,

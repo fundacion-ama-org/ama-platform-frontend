@@ -8,5 +8,6 @@ import { Component, Input } from '@angular/core';
 export class TitleModuleComponent {
 
   @Input({ required: true }) title!: string;
+  @Input() barra: boolean = true
 
 }

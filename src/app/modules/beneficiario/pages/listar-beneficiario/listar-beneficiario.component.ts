@@ -1,7 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatTableDataSource } from '@angular/material/table';
 import { FormularioBeneficiarioComponent } from '../../components/formulario-beneficiario/formulario-beneficiario.component';
 import Swal from 'sweetalert2';
 import { BeneficiarioService } from '../../services/beneficiario.service';
@@ -36,7 +34,15 @@ export class ListarBeneficiarioComponent {
       title: 'Tipo ayuda'
     },
     {
-      nameColumn: 'descripcion',
+      nameColumn: 'correo',
+      title: 'Correo'
+    },
+    {
+      nameColumn: 'telefono',
+      title: 'Telefono'
+    },
+    {
+      nameColumn: 'descripcion_recibida',
       title: 'Desc. recibida'
     },
   ]
@@ -45,8 +51,10 @@ export class ListarBeneficiarioComponent {
       nombre_beneficiario: 'Marlon',
       apellido_beneficiario: 'Quinde',
       direccion: 'Casa',
+      telefono: '0987654321',
+      correo: 'marlon.quindec@ug.edu.ec',
       tipo_ayuda: 'Ayudaaaaa',
-      descripcion: 'Hola mundo'
+      descripcion_recibida: 'Hola mundo'
     }
   ]
 
@@ -126,22 +134,4 @@ export class ListarBeneficiarioComponent {
     })
   }
 
-  announceSortChange(sortState: any) {
-    // This example uses English messages. If your application supports
-    // multiple language, you would internationalize these strings.
-    // Furthermore, you can customize the message to add additional
-    // details about the values being sorted.
-    if (sortState.direction) {
-      //this._liveAnnouncer.announce(Sorted ${sortState.direction}ending);
-    } else {
-      //this._liveAnnouncer.announce('Sorting cleared');
-    }
-  }
-}
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
 }
