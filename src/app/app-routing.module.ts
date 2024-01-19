@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { VerticalComponent } from './modules/layout/vertical/vertical.component';
+import { AuthGuard } from './modules/login/auth.guard';
 
 const routes: Routes = [
   // * Login
@@ -11,6 +12,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: VerticalComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'beneficiario',
