@@ -12,24 +12,27 @@
                     margin-right: 2%;">person</mat-icon>
                     <mat-form-field class="example-full-width" style="background: white;">
                         <mat-label style="color: silver;">Ingrese su Id</mat-label>
-                        <input matInput formControlName="username" placeholder="Ex. 0999999999">
+                        <input matInput placeholder="Ex. 0999999999" formControlName="username">
                     </mat-form-field>
                 </div>
                 <div style="display: flex;">
                     <mat-icon aria-hidden="false" aria-label="Icono de candado" style="margin-top: 3.5%;
                     margin-right: 2%;">lock</mat-icon>
                     <mat-form-field class="example-full-width">
-                        <mat-label style="color: silver;">Ingrese su Contraseña</mat-label>
-                        <input matInput placeholder="" formControlName="password">
+                        <mat-label style="color: silver;">Ingrese su Cotraseña</mat-label>
+                        <input matInput placeholder="" formControlName="password" [type]="showPassword ? 'text' : 'password'">
+                        <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+                            <mat-icon>{{ showPassword  ? 'visibility' : 'visibility_off' }}</mat-icon>
+                        </button>
                     </mat-form-field>
                 </div>
 
                 <section class="form-group">
                     <div class="example-button-row">
-                      <button mat-flat-button color="primary" routerLink="/auth/listar" (click)="onSubmit()">Ingresar</button>
+                        <button mat-flat-button color="primary" (click)="onSubmit()">Ingresar</button>
                     </div>
                 </section>
-                <a routerLink="/auth/restaurar-login" class="restaurar-contraseña">Olvidé mi contraseña</a>
+                <a routerLink="/auth/forgot-password" class="restaurar-contraseña">Olvidé mi contraseña</a>
             </form>
         </div>
     </div>

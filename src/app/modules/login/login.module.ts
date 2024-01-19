@@ -11,11 +11,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IniciarSesionComponent } from './pages/iniciar-sesion/iniciar-sesion.component';
 import { RestaurarLoginComponent } from './pages/restaurar-login/restaurar-login.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
     IniciarSesionComponent,
-    RestaurarLoginComponent
+    RestaurarLoginComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     CommonModule,

@@ -1,53 +1,58 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
 import { LoginService } from '../../services/login.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-iniciar-sesion',
   templateUrl: './iniciar-sesion.component.html',
-  styleUrl: './iniciar-sesion.component.css'
+  styleUrls: ['./iniciar-sesion.component.css']
 })
 export class IniciarSesionComponent {
   loginForm: FormGroup;
+  showPassword = false;
 
-  constructor(
-    private router: Router,
-    private authService: LoginService,
-    private formBuilder: FormBuilder,
-  ) {
-    this.loginForm = this.formBuilder.group({
+  constructor(private loginService: LoginService, private fb: FormBuilder, private router: Router) {
+    this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
-  onSubmit() {
-    console.log(this.loginForm.valid)
-    if (this.loginForm.valid) {
-      const username = this.loginForm.get('username')?.value;
-      const password = this.loginForm.get('password')?.value;
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
 
-      // Utiliza el servicio de autenticación para verificar las credenciales
-      const isAuthenticated = this.authService.login(username, password);
+    const newPasswordControl = this.loginForm.get('newPassword');
 
-      if (isAuthenticated) {
-        // Si las credenciales son válidas, redirige a la ruta deseada
-        this.router.navigateByUrl('/admin');
-
-      } else {
-        // Si las credenciales son inválidas, puedes mostrar un mensaje o realizar otra acción
-        alert('Credenciales incorrectas. Por favor, inténtalo de nuevo.');
-      }
+    if (newPasswordControl) {
+      const newPasswordType = this.showPassword ? 'text' : 'password';
+      newPasswordControl.get('password')?.patchValue(newPasswordType);
     }
   }
 
-  onClickLogin() {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Usuario o contraseña incorrecta!",
-    });
+  onSubmit() {
+    const usernameControl = this.loginForm.get('username');
+    const passwordControl = this.loginForm.get('password');
+
+    if (usernameControl && passwordControl) {
+      const identification = usernameControl.value;
+      const password = passwordControl.value;
+
+      this.loginService.signIn(identification, password).subscribe(response => {
+        console.log(response);
+        this.router.navigate(['/admin/listar']);
+      }, error => {
+        console.error(error);
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Usuario o contraseña incorrecta!',
+        });
+      });
+    } else {
+      console.error('Error al acceder a los controles del formulario');
+    }
   }
 }
