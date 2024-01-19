@@ -30,13 +30,11 @@ const routes: Routes = [
         loadChildren: () => import('./modules/voluntarios/voluntarios.module').then(m => m.VoluntariosModule)
       },
       { path: '404', component: ErrorComponent},
-      { path: '', redirectTo: 'beneficiario', pathMatch: 'full'},
-      { path: '**', redirectTo: '404'},
+      { path: '**', redirectTo: 'beneficiario'},
     ]
   },
   { path: '404', component: ErrorComponent},
-  { path: '', redirectTo: 'admin', pathMatch: 'full'},
-  { path: '**', redirectTo: '404'}
+  { path: '**', redirectTo: 'auth'}
 ];
 
 @NgModule({
