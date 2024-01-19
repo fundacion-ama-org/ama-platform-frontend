@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';  // Asegúrate de importar el Router
+import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -10,14 +10,25 @@ import Swal from 'sweetalert2';
   styleUrls: ['./iniciar-sesion.component.css']
 })
 export class IniciarSesionComponent {
-
   loginForm: FormGroup;
+  showPassword = false;
 
   constructor(private loginService: LoginService, private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+  }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+
+    const newPasswordControl = this.loginForm.get('newPassword');
+
+    if (newPasswordControl) {
+      const newPasswordType = this.showPassword ? 'text' : 'password';
+      newPasswordControl.get('password')?.patchValue(newPasswordType);
+    }
   }
 
   onSubmit() {
@@ -30,7 +41,7 @@ export class IniciarSesionComponent {
 
       this.loginService.signIn(identification, password).subscribe(response => {
         console.log(response);
-        this.router.navigate(['/listar']);
+        this.router.navigate(['/admin/listar']);
       }, error => {
         console.error(error);
 
@@ -44,28 +55,4 @@ export class IniciarSesionComponent {
       console.error('Error al acceder a los controles del formulario');
     }
   }
-
-  // onSubmit() {
-  //   if (this.loginForm.valid) {
-  //     const username = this.loginForm.get('username')?.value;
-  //     const password = this.loginForm.get('password')?.value;
-
-  //     // Llamada al servicio de autenticación
-  //     this.loginService.signIn(username, password).subscribe(
-  //       (response: any) => {
-  //         if (response.success) {
-  //           // Si las credenciales son válidas, redirige a la ruta deseada
-  //           this.router.navigate(['/brigada']);
-  //         } else {
-  //           // Si las credenciales son inválidas, puedes mostrar un mensaje o realizar otra acción
-  //           alert('Credenciales incorrectas. Por favor, inténtalo de nuevo.');
-  //         }
-  //       },
-  //       (error: any) => {
-  //         console.error('Error al realizar la solicitud:', error);
-  //         // Puedes mostrar un mensaje de error o realizar otra acción según tus necesidades
-  //       }
-  //     );
-  //   }
-  // }
 }
