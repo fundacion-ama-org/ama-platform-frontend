@@ -7,7 +7,7 @@ import { BrigadaRequest } from '../models/Request/BrigadaRequest';
 })
 export class BrigadaService {
 
-private urlEndPoint: string = 'https://localhost:7071/api/Brigada';
+private urlEndPoint: string = 'https://platform-ama-backend.azurewebsites.net/api/Brigadas';
 constructor(private http: HttpClient) { }
 
   public obtenerBrigadas() {
@@ -15,7 +15,7 @@ constructor(private http: HttpClient) { }
   }
 
   public eliminarBrigada(id:number){
-    return this.http.delete(this.urlEndPoint+'/11651'+id);
+    return this.http.delete(this.urlEndPoint+'/'+id);
   }
 
   public editarBrigada(datarequest:BrigadaRequest, id:number){

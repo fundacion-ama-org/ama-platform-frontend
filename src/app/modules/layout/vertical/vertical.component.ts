@@ -20,6 +20,7 @@ export class VerticalComponent {
   constructor(private router: Router) { }
 
   public sidebarItems = [
+    { label: 'Brigadas', icon: 'dvr', url: './admin/brigada' },
     { label: 'Beneficiario', icon: 'redeem', url: './admin/beneficiario' },
     { label: 'Donaciones', icon: 'savings', url: './admin/donaciones' },
     { label: 'Donantes', icon: 'diversity_3', url: './admin/donantes' },

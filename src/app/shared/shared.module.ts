@@ -108,8 +108,8 @@ import { AmaModalComponent } from './components/Ama-modal/Ama-modal.component';
     MatSlideToggleModule,
     MatSortModule,
     MatDatepickerModule,
-    MatNativeDateModule
-
+    MatNativeDateModule,
+    AmaModalComponent
   ]
 })
 export class SharedModule { }
