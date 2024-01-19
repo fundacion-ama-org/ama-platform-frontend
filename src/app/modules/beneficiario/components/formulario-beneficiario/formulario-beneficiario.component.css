@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+@media (min-width: 768px) {
+  .buttons {
+    flex-direction: row-reverse;
+    align-items: flex-end;
+  }
+}

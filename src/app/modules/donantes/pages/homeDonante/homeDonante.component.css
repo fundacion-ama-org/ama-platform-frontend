@@ -1,0 +1,8 @@
+:host {
+  display: block;
+}
+
+.columna-acciones .mat-header-cell,
+.columna-acciones .mat-cell {
+  width: 50px; /* Ancho fijo para la columna ID */
+}

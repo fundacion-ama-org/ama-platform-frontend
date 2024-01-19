@@ -1,15 +1,7 @@
-<div class="padding-content-brigada">
+<!-- <div class="padding-content-brigada">
   <h1 class="w-full text-center">Modulo Brigada</h1>
   <div class="w-full flex justify-content-end flex-wrap mt-6">
     <div class="w-12 lg:w-5 grid">
-      <!-- <div class="w-max col-fixed flex align-content-center flex-wrap cursor-pointer">
-        <button mat-mini-fab color="primary" matTooltip="Crear Brigada">
-          <mat-icon   aria-hidden="false" 
-                      fontIcon="add" 
-                      class="md-36 cursor-pointer">
-          </mat-icon>
-        </button>
-      </div> -->
       <div class="col">
         <mat-form-field class="w-full hide-hint" appearance="outline">
           <mat-label>Nombre de la brigada</mat-label>
@@ -19,7 +11,7 @@
       <div class="w-12 md:w-max col-fixed flex align-content-center flex-wrap">
         <button mat-raised-button color="primary" (click)="abrirVistaCrearBrigada()">Crear brigada</button>
       </div>
-      <!-- <app-Ama-modal [titulo]="'Titulo del modal'"></app-Ama-modal>  -->
+      
     </div>
   </div>
   
@@ -95,7 +87,7 @@
                       class="mat-elevation-z8">
     </mat-paginator>
   </div>
-  <!-- ver brigada -->
+  
   <app-Ama-modal *ngIf="vistaVerBrigada" [titulo]="'Información de la brigada'" (emmiterClose)="cerrarModalVistaBrigada()">
     <div class="w-full grid" app-content>
       <div class="col-6">
@@ -132,7 +124,7 @@
     </div> 
   </app-Ama-modal>
 
-  <!-- Crear brigada -->
+  
   <app-Ama-modal *ngIf="vistaCrearBrigada" [titulo]="'Crear brigada'" (emmiterClose)="cerrrarVistaCrearBrigada()">
     <form class="w-full grid" app-content [formGroup]="nueva_brigada_FormGroup">
       <div class="col-12 pr-0">
@@ -163,7 +155,7 @@
             El número debe tener al menos 8 caracteres
           </mat-error>
       
-          <!-- Mensaje de error para longitud máxima -->
+          
           <mat-error *ngIf="nueva_brigada_FormGroup.get('numero_responsable')?.errors?.['maxlength']">
             El número no puede tener más de 8 caracteres.
           </mat-error>
@@ -192,7 +184,7 @@
       <button mat-raised-button class="button-aceptar ml-3" (click)="crearBrigada()" [disabled]="nueva_brigada_FormGroup.invalid" [ngClass]="{'opacity-40': nueva_brigada_FormGroup.invalid}">Guardar</button>
     </div> 
   </app-Ama-modal>
-  <!-- Crear brigada Exito-->
+  
   <app-Ama-modal  *ngIf="vistaCrearBrigadaExito" 
   [titulo]="'Crear brigada'" 
   [content]="'La Brigada se creo de forma exitosa'"
@@ -201,7 +193,7 @@
 <button mat-raised-button class="button-aceptar" (click)="cerrarModalCreacionBrigadaExito()">Aceptar</button>
 </div> 
 </app-Ama-modal>
-  <!-- Editar Brigada -->
+  
   <app-Ama-modal *ngIf="vistaModificarBrigada" [titulo]="'Editar brigada'" (emmiterClose)="cerrarEditarBrigada()">
     <form class="w-full grid" app-content [formGroup]="editar_brigada_FormGroup">
       <div class="col-12 pr-0">
@@ -231,7 +223,7 @@
             El número debe tener al menos 8 caracteres
           </mat-error>
       
-          <!-- Mensaje de error para longitud máxima -->
+          
           <mat-error *ngIf="editar_brigada_FormGroup.get('numero_responsable_editar')?.errors?.['maxlength']">
             El número no puede tener más de 8 caracteres.
           </mat-error>
@@ -261,7 +253,7 @@
       <button mat-raised-button class="button-aceptar" (click)="cerrarVistaModificarBrigadaExito()">Aceptar</button>
     </div> 
   </app-Ama-modal>
-  <!-- Eliminar Brigada -->
+  
   <app-Ama-modal  *ngIf="vistaModelEliminar" 
                   [titulo]="'Eliminar brigada'" 
                   [content]="'La Brigada se elimino de forma exitosa'"
@@ -284,7 +276,7 @@
     </div> 
   </app-Ama-modal>
 
-  <!-- Error petición de la  Brigada -->
+  
   <app-Ama-modal  [titulo]="'Error en la petición'"  *ngIf="vistaErrorPeticion"
                   [content]="'Lamentamos los inconvenientes. En estos momentos, nos encontramos con problemas técnicos. Por favor, inténtelo de nuevo más tarde.'"
                   [hideClose]="false"
@@ -294,4 +286,4 @@
     </div> 
   </app-Ama-modal>
 
-</div>
+</div> -->
